@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo - Gruppo Micologico</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylecontatti.css">
+    <script defer src="scriptcontatti.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+       <!-- Navbar -->
+       <header class="site-header logo-fullscreen">
+        <div class="logo-wrapper">
+          <img src="images/logo.png" alt="Logo Associazione Micologica Bresadola - Villa d’Ogna" class="main-logo-big">
+        </div>
+      
+      
+      
+        <button class="menu-toggle" aria-label="Apri menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+        <nav class="navbar">
+            <ul>
+                
+     <li><a href="index.html">Home</a></li>
+     <li><a href="chi_siamo.html">Chi siamo</a></li>
+    <li><a href="funghi.html"> Esplora i Funghi</a></li>
+    <li><a href="eventi.html"> Eventi</a></li>
+    <li><a href="leggi.html"> Regolamenti 2025</a></li>
+     <li><a href="riviste.html"> Riviste</a></li>
+    <li><a href="contatti.html" class="active"><img src="images/fungo_icon.png" alt="fungo" class="nav-fungo">Contatti</a></li>
+            </ul>
+        </nav>
+   
+
+   <!-- HERO CONTATTI -->
+<section class="hero-contatti-section">
+  <div class="hero-contatti-wrapper">
+      <h1>Contattaci</h1>
+      <p>Per qualsiasi domanda, richiesta o curiosità, siamo a tua disposizione.</p>
+      <form action="https://formspree.io/f/mjkywkez" method="POST" class="form-contattaci">
+        <input type="email" name="email" placeholder="La tua email" required>
+        <textarea name="message" placeholder="Il tuo messaggio" required></textarea>
+        
+        <!-- Checkbox per accettare l'informativa sulla privacy -->
+<div class="privacy-checkbox">
+  <label for="privacy">
+      <input type="checkbox" id="privacy" name="privacy" required>
+      Ho letto e accetto l' <a href="privacy.html" target="_blank">informativa sulla privacy</a>.
+  </label>
+</div>
+        
+        <button type="submit">Invia messaggio</button>
+    </form>
+  </div>
+</section>
+
+<!-- SEZIONE MAPPA + CONTATTI -->
+<section class="mappa-e-contatti">
+  <div class="mappa">
+    <iframe
+  src="https://maps.google.com/maps?q=45.90729843776284,9.930570683128495&hl=it&z=16&output=embed"
+  width="100%"
+  height="400"
+  style="border:0; border-radius: 15px;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+
+
+  </div>
+  <div class="contatti-info">
+      <h2>I nostri contatti</h2>
+      <p>📍Largo Europa, 152 24020 Villa d'Ogna BG</p>
+      <p>📧 pierino.bigoni@gmail.com </p>
+      <p>📞 +39 3384277839</p>
+      <p>🕒 Lun: 21:00 - 22.30 Esclusi festivi</p>
+  </div>
+</section>
+
+
+<section class="newsletter-section">
+    <h2>Iscriviti alla nostra newsletter</h2>
+    <p>Rimani aggiornato su eventi, corsi e uscite micologiche!</p>
+    <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1396623/forms/149330395780875484/subscribe" method="post" target="_blank">
+        <input type="email" name="fields[email]" placeholder="Inserisci la tua email" required>
+        
+        <!-- Checkbox per accettare l'informativa sulla privacy -->
+        <div class="privacy-checkbox">
+            <input type="checkbox" id="newsletter-privacy" name="privacy" required>
+            <label for="newsletter-privacy">
+                Ho letto e accetto l' <a href="privacy.html" target="_blank">informativa sulla privacy</a>.
+            </label>
+        </div>
+        
+        <button type="submit" class="subscribe-btn">Iscriviti</button>
+    </form>
+</section>
+
+<footer>
+  <p>© 2025 Gruppo Micologico - Tutti i diritti riservati</p>
+</footer>
+
+    <script defer src="script.js"></script>
+</body>
+</html>

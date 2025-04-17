@@ -1,0 +1,100 @@
+[
+    {
+        "genere": "Amanita",
+        "specie": "muscaria",
+        "nome_comune": "Amanita muscaria",
+        "immagine": "images/funghi/amanita_muscaria.webp",
+        "habitat": "Boschi di conifere e latifoglie",
+        "commestibilita": "Velenoso",
+        "rarita": "Comune",
+        "ecologia": "Micorrizico"
+      },
+      {
+        "genere": "Boletus",
+        "specie": "edulis",
+        "nome_comune": "Porcino",
+        "immagine": "images/funghi/boletus_edulis.webp",
+        "habitat": "Boschi misti, sotto querce e castagni",
+        "commestibilita": "Commestibile",
+        "rarita": "Comune",
+        "ecologia": "Micorrizico"
+      },
+      {
+        "genere": "Cantharellus",
+        "specie": "cibarius",
+        "nome_comune": "Finferlo",
+        "immagine": "images/funghi/cantharellus_cibarius.webp",
+        "habitat": "Boschi di conifere e latifoglie",
+        "commestibilita": "Commestibile",
+        "rarita": "Comune"
+      },
+      {
+        "genere": "Lactarius",
+        "specie": "deliciosus",
+        "nome_comune": "Lactarius delizioso",
+        "immagine": "images/funghi/lactarius_deliciosus.webp",
+        "habitat": "Boschi di conifere",
+        "commestibilita": "Commestibile",
+        "rarita": "Comune",
+        "ecologia": "Micorrizico"
+      },
+      {
+        "genere": "Clitocybe",
+        "specie": "nebularis",
+        "nome_comune": "Clitocybe nebularis",
+        "immagine": "images/funghi/clitocybe_nebularis.webp",
+        "habitat": "Boschi umidi",
+        "commestibilita": "Commestibile con cautela",
+        "rarita": "Comune",
+        "ecologia": "Saprofita"
+      },
+      {
+        "genere": "Macrolepiota",
+        "specie": "procera",
+        "nome_comune": "Mazza di tamburo",
+        "immagine": "images/funghi/macrolepiota_procera.webp",
+        "habitat": "Prati e margini dei boschi",
+        "commestibilita": "Commestibile",
+        "rarita": "Comune",
+        "ecologia": "Saprofita"
+      },
+      {
+        "genere": "Chlorophyllum",
+        "specie": "molybdites",
+        "nome_comune": "Falso prataiolo tossico",
+        "immagine": "images/funghi/chlorophyllum_molybdites.webp",
+        "habitat": "Prati e giardini",
+        "commestibilita": "Velenoso",
+        "rarita": "Comune",
+        "ecologia": "Saprofita"
+      },
+      {
+        "genere": "Gyromitra",
+        "specie": "esculenta",
+        "nome_comune": "Falsa spugnola",
+        "immagine": "images/funghi/gyromitra_esculenta.webp",
+        "habitat": "Boschi montani",
+        "commestibilita": "Velenoso (mortale)",
+        "rarita": "Non comune",
+        "ecologia": "Saprofita"
+      },
+      {
+        "genere": "Morchella",
+        "specie": "esculenta",
+        "nome_comune": "Spugnola",
+        "immagine": "images/funghi/morchella_esculenta.webp",
+        "habitat": "Prati umidi e margini di bosco",
+        "commestibilita": "Commestibile previa cottura",
+        "rarita": "Non comune"
+      },
+      {
+        "genere": "Coprinus",
+        "specie": "comatus",
+        "nome_comune": "Coprinus comatus",
+        "immagine": "images/funghi/coprinus_comatus.webp",
+        "habitat": "Prati, giardini e margini stradali",
+        "commestibilita": "Commestibile da giovane",
+        "rarita": "Comune"
+      }
+    ]
+    

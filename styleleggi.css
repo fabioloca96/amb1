@@ -1,0 +1,130 @@
+/* Effetto Parallax per l'hero */
+.hero-leggi {
+    background-image: url('images/cestino.jpg');
+    background-size: cover;
+    background-position: center center; /* Posizione iniziale */
+    background-repeat: no-repeat;
+    color: #fff;
+    text-align: center;
+    padding: 100px 20px;
+    height: 70vh;
+    position: relative;
+    overflow: hidden; /* Assicura che il contenuto non esca dall'area */
+}
+.hero__title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+}
+
+.hero__subtitle {
+    font-size: 1.5rem;
+}
+
+/* Sezioni con margine per separazione */
+section {
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    opacity: 0; /* Inizialmente invisibile */
+    transform: translateY(20px); /* Partenza dall'alto */
+    animation: fadeIn 1.5s ease-out forwards;
+    animation-delay: 0.5s; /* Ritardo per un effetto più fluido */
+}
+
+/* Effetto dissolvenza */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px); /* Partenza dall'alto */
+    animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Regolamento */
+.regolamento h2 {
+    font-size: 2rem;
+    color: #2a2a2a;
+    margin-bottom: 20px;
+}
+
+.regolamento p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.elenco-comuni {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.elenco-comuni li {
+    font-size: 1.1rem;
+    color: #2a2a2a;
+}
+
+/* Buone Norme */
+.buone-norme h2 {
+    font-size: 2rem;
+    color: #2a2a2a;
+    margin-bottom: 20px;
+}
+
+.buone-norme p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.norme-list {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.norme-list li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.norme-list li strong {
+    color: #ff9900;
+}
+
+/* Sanzioni */
+.sanzioni h2 {
+    font-size: 2rem;
+    color: #2a2a2a;
+    margin-bottom: 20px;
+}
+
+.sanzioni p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.sanzioni-list {
+    list-style: none;
+    padding-left: 20px;
+}
+
+.sanzioni-list li {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.sanzioni-list li strong {
+    color: #ff0000;
+}
+
+/* Footer */
+footer {
+    background-color: #2a2a2a;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Media Query per dispositivi mobili */

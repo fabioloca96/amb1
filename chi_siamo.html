@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chi Siamo - Gruppo Micologico</title>
+    <link rel="stylesheet" href="stylechisiamo.css">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="scriptchisiamo.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+       <!-- Navbar -->
+       <header class="site-header logo-fullscreen">
+        <div class="logo-wrapper">
+          <img src="images/logo.png" alt="Logo Associazione Micologica Bresadola - Villa d’Ogna" class="main-logo-big">
+        </div>
+      
+      
+      
+        <button class="menu-toggle" aria-label="Apri menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html"> Home</a></li>
+    <li><a href="chi_siamo.html"class="active"><img src="images/fungo_icon.png" alt="fungo" class="nav-fungo">Chi siamo</a></li>
+    <li><a href="eventi.html">Eventi</a></li>
+    <li><a href="leggi.html"> Regolamenti 2025</a></li>
+    <li><a href="contatti.html"> Contatti</a></li>
+  
+            </ul>
+        </nav>
+   
+
+    <!-- Hero Section -->
+    <section class="hero-chi">
+        <div class="hero__content">
+            <h1 class="hero__title">Chi siamo</h1>
+            <p class="hero__subtitle">Dal 1976, passione e ricerca micologica</p>
+        </div>
+    </section>
+
+    <!-- Storia e Missione -->
+    <section class="storia fade-in">
+        <h2>La Nostra Storia</h2>
+        <p>Il Gruppo Micologico di Villa d’Ogna è stato fondato nel 1976 grazie all’iniziativa di Mario Galli di Barlassina, appassionato micologo e naturalista, con il sostegno dell’amministrazione comunale di Villa d’Ogna e undici volontari.
+            Fin dall’inizio, il gruppo è stato affiliato all’Associazione Micologica Bresadola di Trento, una delle principali realtà nazionali nel campo della micologia.
+            La prima attività ufficiale del gruppo è stata l’organizzazione della Mostra Micologica nell’agosto del 1976. Da allora questa manifestazione è diventata un appuntamento annuale di rilievo, capace di attirare non solo residenti, ma anche numerosi visitatori e turisti. Nel 1977  in collaborazione con il Gruppo Micologico di Barlassina  ha organizzato a Fino del Monte una sessione autunnale del Comitato Scientifico Nazionale con la partecipazione di micologi provenienti da tutta Italia. 
+            Nel corso degli anni, il gruppo ha ampliato le proprie attività, affiancando alla divulgazione anche la ricerca scientifica. L’associazione ha investito nella  formazione dei propri soci attraverso corsi di aggiornamento, partecipazione a comitati scientifici e collaborazione con esperti micologi nazionali e internazionali. L’impegno verso la diffusione della conoscenza micologica e naturalistica si estende oltre che a vari enti  anche al mondo della scuola: il gruppo collabora con istituti di diverso grado dalla scuola materna alle superiori, proponendo incontri tematici, proiezioni e uscite sul territorio. Il Gruppo micologico di Villa d’Ogna  ha inoltre sviluppato relazioni e scambi scientifici con diversi gruppi micologici sia nazionali che stranieri. 
+            Oggi il gruppo conta 89 soci e continua a promuovere iniziative di educazione, tutela ambientale e ricerca, mantenendo vivo l’obbiettivo di valorizzare la biodiversità micologica e naturalistica del territorio.     
+            </p>
+    </section>
+
+    <!-- Team -->
+    <section class="team">
+        <h2>Il Nostro Team</h2>
+        <ul class="team-list">
+          <li><strong>Luigi Rossi</strong> <span class="badge badge-presidente">Presidente</span></li>
+          <li><strong>Carmela Civita</strong> <span class="badge badge-vice">Vice presidente</span></li>
+          <li><strong>Pierino Bigoni</strong> <span class="badge badge-segretario">Segretario</span></li>
+          <li><strong>Franco Celeri</strong> <span class="badge badge-vice-segretario">Vice segretario</span></li>
+          <li><strong>Angelo Fraschina</strong> <span class="badge">Consigliere</span></li>
+          <li><strong>Angela Grignani</strong> <span class="badge">Consigliere</span></li>
+          <li><strong>Antonio Guana</strong> <span class="badge">Consigliere</span></li>
+          <li><strong>Fabio Locatelli</strong> <span class="badge">Consigliere</span></li>
+          <li><strong>Mariangela Maffeis</strong> <span class="badge">Consigliere</span></li>
+          <li><strong>Lauro Marinoni</strong> <span class="badge">Consigliere</span></li>
+          <li><strong>Luigi Pezzoli</strong> <span class="badge">Consigliere</span></li>
+          <li><strong>Flavio Rossi</strong> <span class="badge">Consigliere</span></li>
+          <li><strong>Vincenzo Valenti</strong> <span class="badge">Consigliere</span></li>
+        </ul>
+     
+        <h2><span class="microscope-icon">🔬</span> Designati al comitato scientifico nazionale</h2>
+        <ul class="team-list">
+          <li><strong>Pierino Bigoni</strong> <span class="badge badge-effettivo">Effettivo</span></li>
+          <li><strong>Angelo Ballabeni</strong> <span class="badge badge-effettivo">Effettivo</span></li>
+          <li><strong>Flavio Rossi</strong> <span class="badge badge-supplente">Supplente</span></li>
+          <li><strong>Carmela Civita</strong> <span class="badge badge-supplente">Supplente</span></li>
+        </ul>
+      </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Gruppo Micologico - Tutti i diritti riservati</p>
+    </footer>
+    <script defer src="script.js"></script>
+</body>
+</html>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const items = document.querySelectorAll('.team-list li');
+  
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1
+      });
+  
+      items.forEach(item => observer.observe(item));
+    });
+  </script>

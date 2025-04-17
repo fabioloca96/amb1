@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventi - Gruppo Micologico</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styleeventi.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <script defer src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ical.js@1.5.0/build/ical.min.js"></script>
+    <script defer src="scripteventi.js"></script>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <header class="site-header logo-fullscreen">
+        <div class="logo-wrapper">
+          <img src="images/logo.png" alt="Logo Associazione Micologica Bresadola - Villa d’Ogna" class="main-logo-big">
+        </div>
+      
+      
+      
+        <button class="menu-toggle" aria-label="Apri menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </header>
+        <nav class="navbar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="chi_siamo.html">Chi siamo</a></li>
+                <li><a href="eventi.html" class="active"><img src="images/fungo_icon.png" alt="fungo" class="nav-fungo"> Eventi</a></li>
+                <li><a href="leggi.html"> Regolamenti 2025</a></li>
+                <li><a href="contatti.html">Contatti</a></li>
+                         </ul>
+        </nav>
+   
+
+    <!-- Hero Eventi -->
+    <section class="hero eventi">
+        <h1>Eventi e Uscite</h1>
+        <p>Scopri i nostri prossimi eventi e partecipa alle nostre uscite micologiche!</p>
+    </section>
+    <div class="container events-container">
+        <div class="filters">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="search-input" placeholder="Cerca eventi...">
+            </div>
+            <div class="filter-group">
+                <button class="filter-btn active" data-filter="all">Tutti</button>
+                <button class="filter-btn" data-filter="public">Pubblici</button>
+                <button class="filter-btn" data-filter="private">Privati</button>
+                <button class="filter-btn" data-filter="upcoming">Prossimi</button>
+            </div>
+        </div>
+        
+        <div id="events-grid" class="events-grid">
+            <div class="loading">
+                <i class="fas fa-spinner"></i> Caricamento eventi in corso...
+            </div>
+        </div>
+    </div>
+    
+    <div id="event-modal" class="modal">
+        <div class="modal-content" id="modal-content">
+            <!-- Modal content will be dynamically added here -->
+        </div>
+    </div>
+    
+    
+    </body>
+</html>
