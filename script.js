@@ -1,4 +1,4 @@
-<script src="https://cdn.jsdelivr.net/npm/ical.js@1.4.0/build/ical.min.js"></script>
+
 document.addEventListener("DOMContentLoaded", function () {
     console.log("✅ JavaScript caricato!");
 
