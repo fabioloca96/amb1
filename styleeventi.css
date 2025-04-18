@@ -115,8 +115,8 @@
 
 /* Reset e palette principali */
 :root {
-  --primary: #2e7d32;
-  --primary-dark: #005005;
+  --primary: #e1de3a;
+  --primary-dark: #ffffff;
   --white: #ffffff;
   --text-dark: #333;
   --text-light: #f5f5f5;
