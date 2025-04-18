@@ -240,16 +240,13 @@ function displayEvents(events) {
       eventCard.className = `event-card ${privateClass}`;
       eventCard.setAttribute('data-event-id', event.id);
       eventCard.innerHTML = `
-          <div class="event-header">
-              <div class="event-date">
-                  <div class="event-day">${day}</div>
-                  <div class="event-month">${month}</div>
-              </div>
-              <h3 class="event-title">${event.title}</h3>
-              <div class="event-time">
-                  ${timeDisplay}
-              </div>
-          </div>
+<div class="event-header">
+  <div class="event-date-large">
+    ${day} <span class="month">${month}</span>
+  </div>
+  <h3 class="event-title">${event.title}</h3>
+  <div class="event-time">${timeDisplay}</div>
+</div>
           <div class="event-body">
               <p class="event-description">${event.description}</p>
               <div class="event-location">
