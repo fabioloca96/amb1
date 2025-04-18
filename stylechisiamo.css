@@ -207,11 +207,39 @@ body {
 
 /* Effetti Responsive */
 @media (max-width: 768px) {
-    .storia {
-        flex-direction: column;
-        text-align: center;
-    }
-    .storia-content, .storia-image {
-        width: 100%;
-    }
+  /* Rimuovi il parallax su mobile */
+  .hero-chi {
+      background-attachment: scroll;
+      height: 50vh; /* Riduci l'altezza per dispositivi mobili */
+  }
+
+  /* Modifica la dimensione del testo per dispositivi mobili */
+  .hero__content h1 {
+      font-size: 2.5rem; /* Riduci la dimensione del titolo */
+  }
+
+  .hero__content p {
+      font-size: 1.2rem; /* Riduci la dimensione della descrizione */
+      margin-top: 10px;
+  }
+}
+
+/* Effetti Responsive */
+@media (max-width: 768px) {
+  .storia {
+      padding: 40px 20px;
+      text-align: center;
+  }
+  .storia h2 {
+      font-size: 2.2rem;
+  }
+  .team h2 {
+      font-size: 1.6rem;
+  }
+  .team-list {
+      font-size: 1rem;
+  }
+  .card img {
+      height: 180px; /* Rendi le immagini delle card più piccole su mobile */
+  }
 }
