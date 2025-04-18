@@ -151,6 +151,9 @@
   flex-direction: column;
   overflow: hidden;
   cursor: pointer;
+ 
+    height: auto; /* Lascia crescere l’altezza */
+  
 }
 
 .event-card:hover {
@@ -174,6 +177,7 @@
   font-size: 1.4rem;
   margin-bottom: 6px;
   color: var(--primary-dark);
+
 }
 
 .event-description {
