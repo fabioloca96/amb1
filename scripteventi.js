@@ -70,95 +70,85 @@ document.addEventListener('DOMContentLoaded', function() {
   
   function parseCalendarData(data) {
     try {
-        const jcalData = ICAL.parse(data);
-        const component = new ICAL.Component(jcalData);
-        const events = component.getAllSubcomponents('vevent');
-        
-        if (events.length === 0) {
-            showNoEvents();
-            return;
+      const jcalData = ICAL.parse(data);
+      const component = new ICAL.Component(jcalData);
+      const events = component.getAllSubcomponents('vevent');
+  
+      if (events.length === 0) {
+        showNoEvents();
+        return;
+      }
+  
+      const yearStart = new Date(new Date().getFullYear(), 0, 1);
+      const yearEnd = new Date(new Date().getFullYear(), 11, 31, 23, 59, 59);
+      const now = new Date();
+  
+      let all = [];
+  
+      events.forEach(event => {
+        const icalEvent = new ICAL.Event(event);
+        const status = event.getFirstPropertyValue('class') || 'PUBLIC';
+        const isPrivate = status.toUpperCase() === 'PRIVATE';
+  
+        if (icalEvent.isRecurring()) {
+          const iterator = icalEvent.iterator();
+          const uid = icalEvent.uid;
+  
+          let next;
+          while ((next = iterator.next())) {
+            const occurrenceDate = next.toJSDate();
+            if (occurrenceDate > yearEnd) break;
+  
+            const occurrence = icalEvent.getOccurrenceDetails(next);
+  
+            all.push({
+              id: uid + '-' + occurrence.startDate.toUnixTime(),
+              uidBase: uid,
+              title: icalEvent.summary,
+              description: icalEvent.description || 'Nessuna descrizione disponibile',
+              start: occurrence.startDate.toJSDate(),
+              end: occurrence.endDate.toJSDate(),
+              location: icalEvent.location || 'Nessuna località specificata',
+              isPrivate: isPrivate,
+              organizer: event.getFirstPropertyValue('organizer') || 'Nessun organizzatore specificato',
+              created: icalEvent.stampTime ? icalEvent.stampTime.toJSDate() : null,
+              url: event.getFirstPropertyValue('url') || null,
+              isRecurring: true
+            });
+          }
+        } else {
+          all.push({
+            id: icalEvent.uid,
+            uidBase: icalEvent.uid,
+            title: icalEvent.summary,
+            description: icalEvent.description || 'Nessuna descrizione disponibile',
+            start: icalEvent.startDate.toJSDate(),
+            end: icalEvent.endDate.toJSDate(),
+            location: icalEvent.location || 'Nessuna località specificata',
+            isPrivate: isPrivate,
+            organizer: event.getFirstPropertyValue('organizer') || 'Nessun organizzatore specificato',
+            created: icalEvent.stampTime ? icalEvent.stampTime.toJSDate() : null,
+            url: event.getFirstPropertyValue('url') || null,
+            isRecurring: false
+          });
         }
-        
-        allEvents = [];
-        
-        events.forEach(event => {
-            const icalEvent = new ICAL.Event(event);
-            
-            // Check if event has a status and make it private if marked as PRIVATE
-            const status = event.getFirstPropertyValue('class') || 'PUBLIC';
-            const isPrivate = status.toUpperCase() === 'PRIVATE';
-            
-            // Handle recurring events
-            if (icalEvent.isRecurring()) {
-                const iterator = icalEvent.iterator();
-                const expandedEvents = [];
-                
-                // Espandi per i prossimi 6 mesi (puoi regolare secondo necessità)
-                const yearStart = new Date(new Date().getFullYear(), 0, 1);
-                const yearEnd = new Date(new Date().getFullYear(), 11, 31, 23, 59, 59);
-                
-                
-                let next;
-while ((next = iterator.next())) {
-  const occurrenceDate = next.toJSDate();
-  if (occurrenceDate > yearEnd) break;
-  if (occurrenceDate < yearStart) continue;
-
-  const occurrence = icalEvent.getOccurrenceDetails(next);
-
-  expandedEvents.push({
-      id: icalEvent.uid + '-' + occurrence.startDate.toUnixTime(),
-      uidBase: icalEvent.uid,
-      title: icalEvent.summary,
-      description: icalEvent.description || 'Nessuna descrizione disponibile',
-      start: occurrence.startDate.toJSDate(),
-      end: occurrence.endDate.toJSDate(),
-      location: icalEvent.location || 'Nessuna località specificata',
-      isPrivate: isPrivate,
-      organizer: event.getFirstPropertyValue('organizer') || 'Nessun organizzatore specificato',
-      created: icalEvent.stampTime ? icalEvent.stampTime.toJSDate() : null,
-      url: event.getFirstPropertyValue('url') || null,
-      isRecurring: true
-  });
-}
-                
-                const now = new Date();
-const existingUIDs = new Set();
-expandedEvents.forEach(ev => {
-    if (!existingUIDs.has(ev.id.split('-')[0]) && ev.start >= now) {
-        allEvents.push(ev);
-        existingUIDs.add(ev.id.split('-')[0]); // uid base dell'evento ricorrente
-    }
-});
-            } else {
-                // Handle normal, non-recurring events
-                allEvents.push({
-                    id: icalEvent.uid,
-                    title: icalEvent.summary,
-                    description: icalEvent.description || 'Nessuna descrizione disponibile',
-                    start: icalEvent.startDate.toJSDate(),
-                    end: icalEvent.endDate.toJSDate(),
-                    location: icalEvent.location || 'Nessuna località specificata',
-                    isPrivate: isPrivate,
-                    organizer: event.getFirstPropertyValue('organizer') || 'Nessun organizzatore specificato',
-                    created: icalEvent.stampTime ? icalEvent.stampTime.toJSDate() : null,
-                    url: event.getFirstPropertyValue('url') || null,
-                    isRecurring: false
-                });
-            }
-        });
-        
-        // Sort events by start date (ascending)
-        allEvents.sort((a, b) => a.start - b.start);
-        
-        // Apply initial filter
-        applyFilters();
+      });
+  
+      // Ordina
+      all.sort((a, b) => a.start - b.start);
+  
+      // Salva tutto in globale
+      allEvents = all;
+  
+      // Applica filtro iniziale
+      applyFilters();
+  
     } catch (error) {
-        console.error('Error parsing calendar data:', error);
-        showError('Si è verificato un errore durante l\'elaborazione degli eventi. Verifica che il file ICS sia nel formato corretto.');
+      console.error('Errore durante il parsing del calendario:', error);
+      showError('Errore durante l\'elaborazione degli eventi. Verifica che il file ICS sia corretto.');
     }
-}
-
+  }
+  
   // Add event listeners for filters
 filterButtons.forEach(button => {
   button.addEventListener('click', function() {
