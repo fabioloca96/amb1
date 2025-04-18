@@ -94,28 +94,33 @@ document.addEventListener('DOMContentLoaded', function() {
                 const expandedEvents = [];
                 
                 // Espandi per i prossimi 6 mesi (puoi regolare secondo necessità)
-                const sixMonthsFromNow = new Date();
-                sixMonthsFromNow.setMonth(sixMonthsFromNow.getMonth() + 6);
+                const yearStart = new Date(new Date().getFullYear(), 0, 1);
+                const yearEnd = new Date(new Date().getFullYear(), 11, 31, 23, 59, 59);
+                
                 
                 let next;
-                while ((next = iterator.next()) && next.compare(ICAL.Time.fromJSDate(sixMonthsFromNow)) < 0) {
-                    const occurrence = icalEvent.getOccurrenceDetails(next);
-                    
-                    expandedEvents.push({
-                        id: icalEvent.uid + '-' + occurrence.startDate.toUnixTime(),
-                        uidBase: icalEvent.uid,
-                        title: icalEvent.summary,
-                        description: icalEvent.description || 'Nessuna descrizione disponibile',
-                        start: occurrence.startDate.toJSDate(),
-                        end: occurrence.endDate.toJSDate(),
-                        location: icalEvent.location || 'Nessuna località specificata',
-                        isPrivate: isPrivate,
-                        organizer: event.getFirstPropertyValue('organizer') || 'Nessun organizzatore specificato',
-                        created: icalEvent.stampTime ? icalEvent.stampTime.toJSDate() : null,
-                        url: event.getFirstPropertyValue('url') || null,
-                        isRecurring: true
-                    });
-                }
+while ((next = iterator.next())) {
+  const occurrenceDate = next.toJSDate();
+  if (occurrenceDate > yearEnd) break;
+  if (occurrenceDate < yearStart) continue;
+
+  const occurrence = icalEvent.getOccurrenceDetails(next);
+
+  expandedEvents.push({
+      id: icalEvent.uid + '-' + occurrence.startDate.toUnixTime(),
+      uidBase: icalEvent.uid,
+      title: icalEvent.summary,
+      description: icalEvent.description || 'Nessuna descrizione disponibile',
+      start: occurrence.startDate.toJSDate(),
+      end: occurrence.endDate.toJSDate(),
+      location: icalEvent.location || 'Nessuna località specificata',
+      isPrivate: isPrivate,
+      organizer: event.getFirstPropertyValue('organizer') || 'Nessun organizzatore specificato',
+      created: icalEvent.stampTime ? icalEvent.stampTime.toJSDate() : null,
+      url: event.getFirstPropertyValue('url') || null,
+      isRecurring: true
+  });
+}
                 
                 const now = new Date();
 const existingUIDs = new Set();
