@@ -116,7 +116,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     });
                 }
                 
-                allEvents = allEvents.concat(expandedEvents);
+                const now = new Date();
+const existingUIDs = new Set();
+expandedEvents.forEach(ev => {
+    if (!existingUIDs.has(ev.id.split('-')[0]) && ev.start >= now) {
+        allEvents.push(ev);
+        existingUIDs.add(ev.id.split('-')[0]); // uid base dell'evento ricorrente
+    }
+});
             } else {
                 // Handle normal, non-recurring events
                 allEvents.push({
