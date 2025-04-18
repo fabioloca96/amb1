@@ -58,11 +58,11 @@ if (container) {
 
         const eventoHTML = `
           <div class="evento fade-in">
-            <img src="${immagine}" alt="${titolo}">
+            
             <h3>${titolo}</h3>
             <p class="data"><strong>${data} - ${ora}</strong></p>
             <p class="descrizione">${descrizione}</p>
-            <a href="${link}" class="btn">Scopri di più</a>
+           
           </div>
         `;
 
