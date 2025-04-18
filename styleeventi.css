@@ -105,9 +105,9 @@
 
 /* Reset e palette principali */
 :root {
-  --primary: #cecb2467;
+  --primary: #bdbb31;
   --primary-dark: #d8d0d0;
-  --white: #ffffff;
+  --white: #000000;
   --text-dark: #333;
   --text-light: #f5f5f5;
   --accent: #ff9800;
@@ -124,7 +124,7 @@
 }
 
 .event-header {
-  background: linear-gradient(135deg, var(--primary), #5a5a25);
+  background: linear-gradient(135deg, var(--primary), #a1a12a);
   color: white;
   padding: 20px;
   text-align: center;
