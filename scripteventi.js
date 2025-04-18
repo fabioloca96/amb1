@@ -240,28 +240,27 @@ function displayEvents(events) {
       eventCard.className = `event-card ${privateClass}`;
       eventCard.setAttribute('data-event-id', event.id);
       eventCard.innerHTML = `
-<div class="event-header">
-  <div class="event-date-large">
-    ${day} <span class="month">${month}</span>
+  <div class="event-header">
+    <div class="event-date-large">
+      ${day} <span class="month">${month}</span>
+    </div>
+    <h3 class="event-title">${event.title}</h3>
+    <div class="event-time">${timeDisplay}</div>
   </div>
-  <h3 class="event-title">${event.title}</h3>
-  <div class="event-time">${timeDisplay}</div>
-</div>
-          <div class="event-body">
-              <p class="event-description">${event.description}</p>
-              <div class="event-location">
-                  <i class="fas fa-map-marker-alt"></i> ${event.location}
-              </div>
-              ${event.image ? `<img src="${event.image}" alt="Immagine Evento" class="event-image">` : ''}
-          </div>
-          <div class="event-footer">
-              <div class="event-badges">
-                  <span class="event-badge ${badgeClass}">${badgeText}</span>
-                  ${recurringBadge}
-              </div>
-              <a href="#" class="event-action">Dettagli <i class="fas fa-arrow-right"></i></a>
-          </div>
-      `;
+  <div class="event-body">
+    <p class="event-description">${event.description}</p>
+    <div class="event-location">
+      <i class="fas fa-map-marker-alt"></i> ${event.location}
+    </div>
+  </div>
+  <div class="event-footer">
+    <div class="event-badges">
+      <span class="event-badge ${badgeClass}">${badgeText}</span>
+      ${recurringBadge}
+    </div>
+    <a href="#" class="event-action">Dettagli <i class="fas fa-arrow-right"></i></a>
+  </div>
+`;
 
       eventCard.addEventListener('click', function() {
           openEventModal(event);
