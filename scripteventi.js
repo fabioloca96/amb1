@@ -103,6 +103,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     
                     expandedEvents.push({
                         id: icalEvent.uid + '-' + occurrence.startDate.toUnixTime(),
+                        uidBase: icalEvent.uid,
                         title: icalEvent.summary,
                         description: icalEvent.description || 'Nessuna descrizione disponibile',
                         start: occurrence.startDate.toJSDate(),
@@ -175,31 +176,73 @@ function applyFilters() {
     const todayStart = new Date();
     todayStart.setHours(0, 0, 0, 0);
     const todayTimestamp = todayStart.getTime();
-
-    filteredEvents = allEvents.filter(event => {
-        const eventTimestamp = new Date(event.start).getTime();
-
-        if (currentFilter === 'public') {
-            return !event.isPrivate && eventTimestamp >= todayTimestamp;
+  
+    let eventsToFilter = [...allEvents];
+  
+    // Raggruppamento per occorrenze singole di eventi ricorrenti
+    if (currentFilter === 'public' || currentFilter === 'upcoming-all') {
+      const nextOccurrenceMap = new Map();
+  
+      eventsToFilter.forEach(ev => {
+        const eventTimestamp = new Date(ev.start).getTime();
+  
+        if (ev.isRecurring) {
+          if (eventTimestamp >= todayTimestamp) {
+            const key = ev.uidBase;
+            if (!nextOccurrenceMap.has(key) || eventTimestamp < nextOccurrenceMap.get(key).start.getTime()) {
+              nextOccurrenceMap.set(key, ev);
+            }
+          }
+        } else {
+          if (
+            (currentFilter === 'public' && !ev.isPrivate && eventTimestamp >= todayTimestamp) ||
+            (currentFilter === 'upcoming-all' && eventTimestamp >= todayTimestamp)
+          ) {
+            nextOccurrenceMap.set(ev.id, ev);
+          }
         }
-
-        if (currentFilter === 'upcoming-all') {
-            return eventTimestamp >= todayTimestamp;
+      });
+  
+      eventsToFilter = Array.from(nextOccurrenceMap.values());
+    }
+  
+    if (currentFilter === 'all') {
+      const yearStart = new Date(new Date().getFullYear(), 0, 1); // 1 gennaio
+      const yearEnd = new Date(new Date().getFullYear(), 11, 31, 23, 59, 59); // 31 dicembre
+  
+      const firstOfYearMap = new Map();
+  
+      allEvents.forEach(ev => {
+        const eventTime = new Date(ev.start);
+        if (eventTime >= yearStart && eventTime <= yearEnd) {
+          if (ev.isRecurring) {
+            const key = ev.uidBase;
+            if (!firstOfYearMap.has(key) || ev.start < firstOfYearMap.get(key).start) {
+              firstOfYearMap.set(key, ev);
+            }
+          } else {
+            firstOfYearMap.set(ev.id, ev);
+          }
         }
-
-        // currentFilter === 'all'
-        return true;
-    }).filter(event => {
-        // Applica il filtro di ricerca (se c'è)
-        if (!searchTerm) return true;
-
-        return event.title.toLowerCase().includes(searchTerm) ||
-               event.description.toLowerCase().includes(searchTerm) ||
-               event.location.toLowerCase().includes(searchTerm);
+      });
+  
+      eventsToFilter = Array.from(firstOfYearMap.values());
+    }
+  
+    // Applica filtro ricerca
+    filteredEvents = eventsToFilter.filter(event => {
+      if (!searchTerm) return true;
+  
+      return event.title.toLowerCase().includes(searchTerm) ||
+        event.description.toLowerCase().includes(searchTerm) ||
+        event.location.toLowerCase().includes(searchTerm);
     });
-
+  
+    // Ordina per data crescente
+    filteredEvents.sort((a, b) => a.start - b.start);
+  
     displayEvents(filteredEvents);
-}
+  }
 function displayEvents(events) {
   eventsGrid.innerHTML = '';
 
