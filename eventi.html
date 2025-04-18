@@ -39,10 +39,19 @@
    
 
     <!-- Hero Eventi -->
-    <section class="hero eventi">
-        <h1>Eventi e Uscite</h1>
-        <p>Scopri i nostri prossimi eventi e partecipa alle nostre uscite micologiche!</p>
-    </section>
+    <section class="hero-carousel">
+        <div class="carousel-wrapper">
+          
+          <img src="images/heroeventi1.webp" class="carousel-img active" alt="Foto 2">
+          <img src="images/heroeventi2.webp" class="carousel-img" alt="Foto 3">
+          <img src="images/heroeventi3.webp" class="carousel-img" alt="Foto 4">
+          <img src="images/heroeventi4.webp" class="carousel-img" alt="Foto 5">
+        </div>
+        <div class="carousel-overlay">
+          <h1>Le attività del gruppo</h1>
+          <p></p>
+        </div>
+      </section>
     <div class="container events-container">
         <div class="filters">
             <div class="search-box">
@@ -50,11 +59,9 @@
                 <input type="text" id="search-input" placeholder="Cerca eventi...">
             </div>
             <div class="filter-group">
-                <button class="filter-btn active" data-filter="all">Tutti</button>
-                <button class="filter-btn" data-filter="public">Pubblici</button>
-                <button class="filter-btn" data-filter="private">Privati</button>
-                <button class="filter-btn" data-filter="upcoming">Prossimi</button>
-            </div>
+                <button class="filter-btn active" data-filter="public">Eventi pubblici in arrivo</button>
+                <button class="filter-btn" data-filter="all">Tutte le attività 2025</button>
+              </div>
         </div>
         
         <div id="events-grid" class="events-grid">

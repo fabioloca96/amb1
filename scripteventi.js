@@ -1,3 +1,13 @@
+let currentSlide = 0;
+const slides = document.querySelectorAll('.carousel-img');
+
+function showNextSlide() {
+  slides[currentSlide].classList.remove('active');
+  currentSlide = (currentSlide + 1) % slides.length;
+  slides[currentSlide].classList.add('active');
+}
+
+setInterval(showNextSlide, 4000); // cambia ogni 4 secondi
 document.addEventListener('DOMContentLoaded', function() {
   // Configuration
   const calendarPath = './calendar/basics.ics'; // Percorso al file ICS caricato sul tuo server
@@ -9,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
   
   let allEvents = [];
   let filteredEvents = [];
-  let currentFilter = 'all';
+  let currentFilter = 'public';
   
   // Fetch calendar data
   fetchCalendarData();
@@ -135,6 +145,7 @@ document.addEventListener('DOMContentLoaded', function() {
         showError('Si è verificato un errore durante l\'elaborazione degli eventi. Verifica che il file ICS sia nel formato corretto.');
     }
 }
+
   // Add event listeners for filters
 filterButtons.forEach(button => {
   button.addEventListener('click', function() {
@@ -152,59 +163,36 @@ filterButtons.forEach(button => {
   });
 });
   
-  function applyFilters() {
+function applyFilters() {
     const searchTerm = searchInput.value.toLowerCase().trim();
-    const today = new Date();
-    console.log('Data odierna:', today);
-    
-    // Debug: controlla quanti eventi sono nel futuro
-    const futureEvents = allEvents.filter(event => new Date(event.start) >= today);
-    console.log('Eventi futuri trovati:', futureEvents.length);
-    
-    
-    // Filter events based on current filter and search term
-    filteredEvents = allEvents.filter(event => {
-        // First apply type filter
-        if (currentFilter === 'public' && event.isPrivate) {
-            return false;
-        }
-        
-        if (currentFilter === 'private' && !event.isPrivate) {
-            return false;
-        }
-        
-        // Filter for upcoming events (events starting today or in the future)
-       // Filter for upcoming events (events starting today or in the future)
-if (currentFilter === 'upcoming') {
-  // Reset time to start of day for comparison
-  const todayStart = new Date();
-  todayStart.setHours(0, 0, 0, 0);
-  
-  // Convert both dates to timestamps for reliable comparison
-  const todayTimestamp = todayStart.getTime();
-  const eventTimestamp = new Date(event.start).getTime();
-  
-  // Check if event starts today or later
-  if (eventTimestamp < todayTimestamp) {
-      return false;
-  }
-}
+    const todayStart = new Date();
+    todayStart.setHours(0, 0, 0, 0);
+    const todayTimestamp = todayStart.getTime();
 
-        
-        // Then apply search filter if there's a search term
-        if (searchTerm) {
-            return event.title.toLowerCase().includes(searchTerm) ||
-                   event.description.toLowerCase().includes(searchTerm) ||
-                   event.location.toLowerCase().includes(searchTerm);
+    filteredEvents = allEvents.filter(event => {
+        const eventTimestamp = new Date(event.start).getTime();
+
+        if (currentFilter === 'public') {
+            return !event.isPrivate && eventTimestamp >= todayTimestamp;
         }
-        
+
+        if (currentFilter === 'upcoming-all') {
+            return eventTimestamp >= todayTimestamp;
+        }
+
+        // currentFilter === 'all'
         return true;
+    }).filter(event => {
+        // Applica il filtro di ricerca (se c'è)
+        if (!searchTerm) return true;
+
+        return event.title.toLowerCase().includes(searchTerm) ||
+               event.description.toLowerCase().includes(searchTerm) ||
+               event.location.toLowerCase().includes(searchTerm);
     });
-    
-    // Display filtered events
+
     displayEvents(filteredEvents);
 }
-  
 function displayEvents(events) {
   eventsGrid.innerHTML = '';
 
