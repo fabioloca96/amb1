@@ -135,26 +135,22 @@
   padding: 20px 0;
   scroll-behavior: smooth;
 }
-
+.event-header {
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  text-align: center;
+  padding: 25px 20px 15px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
 /* Card evento */
 .event-card {
-  background: var(--white);
-  color: var(--text-dark);
-  border-radius: 20px;
-  width: 340px;
-  min-height: 320px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  padding: 0;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  flex-shrink: 0;
+  height: auto;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  cursor: pointer;
- 
-    height: auto; /* Lascia crescere l’altezza */
-  
+  justify-content: space-between;
+  overflow: visible;
 }
+
 
 .event-card:hover {
   transform: scale(1.05);
@@ -181,9 +177,31 @@
 }
 
 .event-description {
-  font-size: 0.95rem;
-  color: #555;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: var(--text-dark);
+  line-height: 1.6;
+  max-height: none;
+  overflow: visible;
+  display: block;
+}
+.event-date-large {
+  font-size: 2.4rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+.event-date-large .month {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  margin-left: 6px;
+}
+.event-body {
+  padding: 20px;
+  text-align: center;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .event-date {
