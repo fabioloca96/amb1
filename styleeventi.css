@@ -134,7 +134,7 @@
 
 /* Card evento */
 .event-card {
-  background-color: rgba(196, 216, 219, 0.881);
+  background-color: rgba(249, 251, 251, 0.881);
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -204,7 +204,7 @@
 .event-date {
   font-size: 0.9rem;
   font-weight: bold;
-  color: #0791ac91;
+  color: #00000091;
   margin-bottom: 10px;
 }
 .event-title {
