@@ -193,7 +193,26 @@
     transform: scale(1.1);
     background-color: #084d3d;
 }
- 
+ /* Colore del testo della privacy nella newsletter */
+.newsletter-section .privacy-checkbox label {
+    color: #0E6655; /* Cambia con il colore che preferisci */
+}
+
+/* Colore della checkbox nella newsletter */
+.newsletter-section .privacy-checkbox input[type="checkbox"] {
+    border-color: #0E6655; /* Colore del bordo della checkbox */
+}
+
+/* Colore della checkbox selezionata nella newsletter */
+.newsletter-section .privacy-checkbox input[type="checkbox"]:checked {
+    background-color: #0E6655; /* Colore di sfondo della checkbox selezionata */
+    border-color: #0E6655; /* Colore del bordo della checkbox selezionata */
+}
+
+/* Segno di spunta nella checkbox selezionata */
+.newsletter-section .privacy-checkbox input[type="checkbox"]:checked::after {
+    color: white; /* Colore del segno di spunta */
+}
 
 
 /* RESPONSIVE */
