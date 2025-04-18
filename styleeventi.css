@@ -134,7 +134,7 @@
 }
 
 .event-header {
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  background: linear-gradient(135deg, var(--primary), #1e1e0e);
   color: white;
   padding: 20px;
   text-align: center;
