@@ -126,7 +126,7 @@
 
 .event-header {
   background: linear-gradient(135deg, var(--primary), #a1a12a);
-  color: rgb(185, 236, 236);
+ 
   padding: 20px;
   text-align: center;
   position: relative;
@@ -134,7 +134,7 @@
 
 /* Card evento */
 .event-card {
-  background-color: rgba(198, 244, 249, 0.881);
+  background-color: rgba(196, 216, 219, 0.881);
   border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   display: flex;
@@ -145,7 +145,7 @@
 }
 .event-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.20);
 }
 
 /* Immagine evento */
@@ -204,7 +204,7 @@
 .event-date {
   font-size: 0.9rem;
   font-weight: bold;
-  color: var(--primary);
+  color: #0791ac91;
   margin-bottom: 10px;
 }
 .event-title {
