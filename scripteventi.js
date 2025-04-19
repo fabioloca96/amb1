@@ -255,15 +255,15 @@ function applyFilters() {
       const eventDate = new Date(event.start);
       let endDate = new Date(event.end);
   
-      // Correggi DTEND per eventi all-day di un solo giorno
+      // ✅ Correggi fine evento se è all-day di un solo giorno
       const isAllDayEvent = eventDate.getHours() === 0 &&
                             eventDate.getMinutes() === 0 &&
                             endDate.getHours() === 0 &&
                             endDate.getMinutes() === 0 &&
-                            (endDate - eventDate) >= 86400000;
+                            (endDate.getTime() - eventDate.getTime()) === 86400000;
   
-      if (isAllDayEvent && endDate - eventDate === 86400000) {
-        endDate = new Date(endDate.getTime() - 1); // fine = giorno stesso
+      if (isAllDayEvent) {
+        endDate = new Date(eventDate); // correggiamo la data finale
       }
   
       const isMultiDay = eventDate.toDateString() !== endDate.toDateString();
@@ -278,19 +278,18 @@ function applyFilters() {
         : `${startDay} ${startMonth}`;
   
       let timeDisplay = '';
+  
       if (isAllDayEvent) {
-        if (isMultiDay) {
-          timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
-        } else {
-          timeDisplay = `<i class="far fa-sun"></i> Tutto il giorno`;
-        }
+        timeDisplay = `<i class="far fa-sun"></i> Tutto il giorno`;
       } else {
-        if (isMultiDay) {
-          timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
-        } else {
+        const isSameDay = eventDate.toDateString() === endDate.toDateString();
+  
+        if (isSameDay) {
           const startTime = eventDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
           const endTime = endDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
           timeDisplay = `<i class="far fa-clock"></i> ${startTime} - ${endTime}`;
+        } else {
+          timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
         }
       }
   
@@ -306,9 +305,7 @@ function applyFilters() {
       eventCard.setAttribute('data-event-id', event.id);
       eventCard.innerHTML = `
         <div class="event-header">
-          <div class="event-date-large">
-            ${dateDisplay}
-          </div>
+          <div class="event-date-large">${dateDisplay}</div>
           <h3 class="event-title">${event.title}</h3>
           <div class="event-time">${timeDisplay}</div>
         </div>
@@ -327,13 +324,14 @@ function applyFilters() {
         </div>
       `;
   
-      eventCard.addEventListener('click', function () {
+      eventCard.addEventListener('click', function() {
         openEventModal(event);
       });
   
       eventsGrid.appendChild(eventCard);
     });
   }
+  
   
 function openEventModal(event) {
   const eventDate = new Date(event.start);
