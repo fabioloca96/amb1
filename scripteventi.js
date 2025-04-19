@@ -268,9 +268,24 @@ function displayEvents(events) {
       if (isAllDayEvent) {
           timeDisplay = `<i class="far fa-sun"></i> Tutto il giorno`;
       } else {
-          const startTime = eventDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
-          const endTime = new Date(event.end).toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
-          timeDisplay = `<i class="far fa-clock"></i> ${startTime} - ${endTime}`;
+        const endDate = new Date(event.end);
+        const isSameDay = eventDate.toDateString() === endDate.toDateString();
+        
+        if (isAllDayEvent) {
+          if (isSameDay) {
+            timeDisplay = `<i class="far fa-sun"></i> Tutto il giorno`;
+          } else {
+            timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
+          }
+        } else {
+          if (isSameDay) {
+            const startTime = eventDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
+            const endTime = endDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
+            timeDisplay = `<i class="far fa-clock"></i> ${startTime} - ${endTime}`;
+          } else {
+            timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
+          }
+        }
       }
 
       const privateClass = event.isPrivate ? 'private-event' : '';
@@ -340,11 +355,31 @@ function openEventModal(event) {
           <i class="far fa-sun"></i> Evento giornaliero
       </div>`;
   } else {
-      const startTime = eventDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
-      const endTime = endDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
-      timeDisplay = `<div class="modal-datetime">
+    const isSameDay = eventDate.toDateString() === endDate.toDateString();
+
+    if (isAllDayEvent) {
+      if (isSameDay) {
+        timeDisplay = `<div class="modal-datetime">
+          <i class="far fa-sun"></i> Evento giornaliero
+        </div>`;
+      } else {
+        timeDisplay = `<div class="modal-datetime">
+          <i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}
+        </div>`;
+      }
+    } else {
+      if (isSameDay) {
+        const startTime = eventDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
+        const endTime = endDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
+        timeDisplay = `<div class="modal-datetime">
           <i class="far fa-clock"></i> ${startTime} - ${endTime}
-      </div>`;
+        </div>`;
+      } else {
+        timeDisplay = `<div class="modal-datetime">
+          <i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}
+        </div>`;
+      }
+    }
   }
 
   const modalClass = event.isPrivate ? 'modal-private' : '';
