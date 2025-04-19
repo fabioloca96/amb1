@@ -3,23 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gruppo Micologico</title>
+    <title>Gruppo Micologico AMB Villa d'Ogna - Scoperta e studio dei funghi in Val Seriana</title>
+    <meta name="description" content="Il Gruppo Micologico AMB Villa d'Ogna promuove la conoscenza dei funghi, organizza eventi, uscite didattiche e offre supporto per l'identificazione delle specie fungine locali.">
+    <meta name="keywords" content="funghi, micologia, AMB, Villa d'Ogna, associazione micologica, raccolta funghi, identificazione funghi, Bergamo, Val Seriana">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Gruppo Micologico AMB Villa d'Ogna">
+    <meta property="og:description" content="Associazione dedicata alla conoscenza, ricerca e divulgazione micologica nella Val Seriana.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gruppomicologicovilladogna.it/">
+    <meta property="og:image" content="images/logo.png">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.gruppomicologicovilladogna.it/">
+    
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdn.jsdelivr.net/npm/ical.js@1.4.0/build/ical.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ical.js@1.4.0/build/ical.min.js" defer></script>
     <script defer src="script.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Poppins:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
 </head>
 <body>
-
    <!-- HEADER -->
    <header class="site-header logo-fullscreen">
     <div class="logo-wrapper">
-      <img src="images/logo.png" alt="Logo Associazione Micologica Bresadola - Villa d’Ogna" class="main-logo-big">
+      <img src="images/logo.png" alt="Logo Associazione Micologica Bresadola - Gruppo di Villa d'Ogna" class="main-logo-big">
     </div>
-  
-  
-  
     <button class="menu-toggle" aria-label="Apri menu">
       <span></span>
       <span></span>
@@ -27,23 +39,22 @@
     </button>
   </header>
   
-  
   <!-- NAVBAR -->
-  <nav class="navbar">
+  <nav class="navbar" aria-label="Navigazione principale">
     <ul>
-      <li><a href="index.html" class="active"><img src="images/fungo_icon.png" alt="fungo" class="nav-fungo">Home</a></li>
+      <li><a href="index.html" class="active"><img src="images/fungo_icon.png" alt="Icona fungo" class="nav-fungo">Home</a></li>
       <li><a href="chi_siamo.html">Chi siamo</a></li>
- 
       <li><a href="eventi.html">Eventi</a></li>
       <li><a href="leggi.html">Regolamenti 2025</a></li>
-    
       <li><a href="contatti.html">Contatti</a></li>
     </ul>
   </nav>
+  
+  <main>
     <!-- Hero Section -->
     <section class="hero hero-1">
         <div class="hero__content fade-in">
-            <h1 class="hero__title fade-in">Micologia a scuola: </h1>
+            <h1 class="hero__title fade-in">Micologia a scuola</h1>
             <p class="hero__subtitle fade-in">Portiamo la conoscenza dei funghi nelle scuole per avvicinare i ragazzi all'ambiente.</p>
             <a href="chi_siamo.html" class="cta-btn">Scopri il nostro gruppo</a>
         </div>
@@ -53,7 +64,6 @@
         <div class="hero__content fade-in">
             <h1 class="hero__title fade-in">Mappiamo e studiamo la biodiversità del nostro territorio</h1>
             <p class="hero__subtitle fade-in">Analizziamo e documentiamo le specie fungine locali, contribuendo alla conservazione e alla ricerca scientifica</p>
-           
         </div>
     </section>
     
@@ -65,28 +75,52 @@
         </div>
     </section>
     
-
     <!-- Eventi in evidenza -->
     <section class="eventi">
         <h2>Prossimi Eventi</h2>
         <div class="eventi-container">
-            
+            <!-- Gli eventi verranno caricati dinamicamente da JavaScript -->
         </div>
         <a href="eventi.html" class="btn vedi-tutti">Vedi tutti gli eventi</a>
     </section>
-    <script src="script.js"></script>
+  </main>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <p>© 2025 AMB Villa d'Ogna - Tutti i diritti riservati</p>
-            <div class="social-icons">
-                <a href="https://www.facebook.com/gruppomicologicovilladogna"><img src="images/facebook.svg" alt="Facebook"></a>
-                
-            </div>
-        </div>
-       
-    </footer>
-    <script defer src="script.js"></script>
+  <!-- Footer -->
+  <footer>
+      <div class="footer-content">
+          <p>© 2025 AMB Villa d'Ogna - Tutti i diritti riservati</p>
+          <div class="social-icons">
+              <a href="https://www.facebook.com/gruppomicologicovilladogna" aria-label="Seguici su Facebook"><img src="images/facebook.svg" alt="Facebook"></a>
+          </div>
+      </div>
+  </footer>
+
+  <!-- Schema.org markup per l'organizzazione -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Associazione Micologica Bresadola - Villa d'Ogna",
+    "url": "https://www.gruppomicologicovilladogna.it",
+    "logo": "https://www.gruppomicologicovilladogna.it/images/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Largo Europa, 152",
+      "addressLocality": "Villa d'Ogna",
+      "postalCode": "24020",
+      "addressRegion": "BG",
+      "addressCountry": "IT"
+    },
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+39 3384277839",
+      "email": "pierino.bigoni@gmail.com",
+      "contactType": "Customer Support"
+    },
+    "sameAs": [
+      "https://www.facebook.com/gruppomicologicovilladogna"
+    ]
+  }
+  </script>
 </body>
 </html>
