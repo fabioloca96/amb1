@@ -1,120 +1,150 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chi Siamo - Gruppo Micologico</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="stylecontatti.css">
-    <script defer src="scriptcontatti.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contatti - Gruppo Micologico Villa d'Ogna</title>
+  <meta name="description" content="Contatta il Gruppo Micologico AMB Villa d'Ogna per informazioni su eventi, corsi, tesseramenti e attività micologiche in Val Seriana." />
+  <meta name="keywords" content="contatti funghi, AMB Villa d'Ogna, micologia, Bergamo, Val Seriana, gruppo micologico" />
+  <link rel="canonical" href="https://www.ambvilladogna.it/contatti.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Contatti - Gruppo Micologico Villa d'Ogna" />
+  <meta property="og:description" content="Contattaci per info su eventi, corsi e uscite micologiche a Villa d'Ogna e in Val Seriana." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.ambvilladogna.it/contatti.html" />
+  <meta property="og:image" content="https://www.ambvilladogna.it/images/logo.png" />
+
+  <!-- CSS + Font -->
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="stylecontatti.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet" />
+  
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.ico" type="image/x-icon" />
 </head>
+
 <body>
+  <header class="site-header logo-fullscreen">
+    <div class="logo-wrapper">
+      <img src="images/logo.png" alt="Logo Gruppo Micologico Villa d’Ogna" class="main-logo-big" />
+    </div>
+    <button class="menu-toggle" aria-label="Apri menu">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
 
-       <!-- Navbar -->
-       <header class="site-header logo-fullscreen">
-        <div class="logo-wrapper">
-          <img src="images/logo.png" alt="Logo Associazione Micologica Bresadola - Villa d’Ogna" class="main-logo-big">
-        </div>
-      
-      
-      
-        <button class="menu-toggle" aria-label="Apri menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </header>
-        <nav class="navbar">
-            <ul>
-                
-     <li><a href="index.html">Home</a></li>
-     <li><a href="chi_siamo.html">Chi siamo</a></li>
-     <li><a href="eventi.html"> Eventi</a></li>
-    <li><a href="leggi.html"> Regolamenti 2025</a></li>
-       <li><a href="contatti.html" class="active"><img src="images/fungo_icon.png" alt="fungo" class="nav-fungo">Contatti</a></li>
-            </ul>
-        </nav>
-   
+  <nav class="navbar" aria-label="Navigazione principale">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="chi_siamo.html">Chi siamo</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="leggi.html">Regolamenti 2025</a></li>
+      <li><a href="contatti.html" class="active"><img src="images/fungo_icon.png" alt="Icona fungo" class="nav-fungo" />Contatti</a></li>
+    </ul>
+  </nav>
 
-   <!-- HERO CONTATTI -->
-<section class="hero-contatti-section">
-  <div class="hero-contatti-wrapper">
-      <h1>Contattaci</h1>
-      <p>Per qualsiasi domanda, richiesta o curiosità, siamo a tua disposizione.</p>
-      <form action="https://formspree.io/f/mjkywkez" method="POST" class="form-contattaci">
-        <input type="email" name="email" placeholder="La tua email" required>
-        <textarea name="message" placeholder="Il tuo messaggio" required></textarea>
-        
-        <!-- Checkbox per accettare l'informativa sulla privacy -->
-<div class="privacy-checkbox">
-  <label for="privacy">
-      <input type="checkbox" id="privacy" name="privacy" required>
-      Ho letto e accetto l' <a href="privacy.html" target="_blank">informativa sulla privacy</a>.
-  </label>
-</div>
-        
-        <button type="submit">Invia messaggio</button>
-    </form>
-  </div>
-</section>
-
-<!-- SEZIONE MAPPA + CONTATTI -->
-<section class="mappa-e-contatti">
-  <div class="mappa">
-    <iframe
-  src="https://maps.google.com/maps?q=45.90729843776284,9.930570683128495&hl=it&z=16&output=embed"
-  width="100%"
-  height="400"
-  style="border:0; border-radius: 15px;"
-  allowfullscreen=""
-  loading="lazy">
-</iframe>
-
-
-  </div>
-  <div class="contatti-info">
-      <h2>I nostri contatti</h2>
-      <p>📍Largo Europa, 152 24020 Villa d'Ogna BG</p>
-      <p>📧 pierino.bigoni@gmail.com </p>
-      <p>📞 +39 3384277839</p>
-      <p>🕒 Lun: 21:00 - 22.30 Esclusi festivi</p>
-  </div>
-</section>
-
-
-<section class="newsletter-section">
-    <h2>Iscriviti alla nostra newsletter</h2>
-    <p>Rimani aggiornato su eventi, corsi e uscite micologiche!</p>
-    <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1396623/forms/149330395780875484/subscribe" method="post" target="_blank">
-        <input type="email" name="fields[email]" placeholder="Inserisci la tua email" required>
-        
-        <!-- Checkbox per accettare l'informativa sulla privacy -->
-        <div class="privacy-checkbox">
-            <input type="checkbox" id="newsletter-privacy" name="privacy" required>
-            <label for="newsletter-privacy">
-                Ho letto e accetto l' <a href="privacy.html" target="_blank">informativa sulla privacy</a>.
-            </label>
-        </div>
-        
-        <button type="submit" class="subscribe-btn">Iscriviti</button>
-    </form>
-</section>
-
-<footer>
-  <div class="footer-content">
-    
-      <p>© 2025 Associazione Micologica Bresadola - Gruppo di Villa d'Ogna - Tutti i diritti riservati</p>
-      <p>Via Largo Europa 152 - C.F. 90002890169</p>
- 
-      <div class="social-icons">
-          <a href="https://www.facebook.com/gruppomicologicovilladogna"><img src="images/facebook.svg" alt="Facebook"></a>
+  <main>
+    <!-- HERO -->
+    <section class="hero-contatti-section">
+      <div class="hero-contatti-wrapper">
+        <h1>Contattaci</h1>
+        <p>Per qualsiasi domanda, richiesta o curiosità, siamo a tua disposizione.</p>
+        <form action="https://formspree.io/f/mjkywkez" method="POST" class="form-contattaci">
+          <label for="email" class="visually-hidden">Email</label>
+          <input type="email" id="email" name="email" placeholder="La tua email" required />
           
-      </div>
-  </div>
- 
-</footer>
+          <label for="message" class="visually-hidden">Messaggio</label>
+          <textarea id="message" name="message" placeholder="Il tuo messaggio" required></textarea>
+          
+          <div class="privacy-checkbox">
+            <label>
+              <input type="checkbox" name="privacy" required />
+              Ho letto e accetto l' <a href="privacy.html" target="_blank">informativa sulla privacy</a>.
+            </label>
+          </div>
 
-    <script defer src="script.js"></script>
+          <button type="submit">Invia messaggio</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- MAPPA E INFO -->
+    <section class="mappa-e-contatti">
+      <div class="mappa">
+        <iframe
+          src="https://maps.google.com/maps?q=45.90729843776284,9.930570683128495&hl=it&z=16&output=embed"
+          width="100%"
+          height="400"
+          style="border:0; border-radius: 15px;"
+          allowfullscreen
+          loading="lazy">
+        </iframe>
+      </div>
+
+      <div class="contatti-info">
+        <h2>I nostri contatti</h2>
+        <p>📍 Largo Europa, 152 – 24020 Villa d'Ogna (BG)</p>
+        <p>📧 <a href="mailto:pierino.bigoni@gmail.com">pierino.bigoni@gmail.com</a></p>
+        <p>📞 <a href="tel:+393384277839">+39 338 427 7839</a></p>
+        <p>🕒 Lunedì: 21:00 – 22:30 (Esclusi festivi)</p>
+      </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+    <section class="newsletter-section">
+      <h2>Iscriviti alla nostra newsletter</h2>
+      <p>Rimani aggiornato su eventi, corsi e uscite micologiche!</p>
+      <form class="ml-block-form" action="https://assets.mailerlite.com/jsonp/1396623/forms/149330395780875484/subscribe" method="post" target="_blank">
+        <label for="newsletter-email" class="visually-hidden">Email newsletter</label>
+        <input type="email" id="newsletter-email" name="fields[email]" placeholder="Inserisci la tua email" required />
+        
+        <div class="privacy-checkbox">
+          <label>
+            <input type="checkbox" name="privacy" required />
+            Ho letto e accetto l' <a href="privacy.html" target="_blank">informativa sulla privacy</a>.
+          </label>
+        </div>
+
+        <button type="submit" class="subscribe-btn">Iscriviti</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <p>© 2025 Associazione Micologica Bresadola - Gruppo di Villa d'Ogna</p>
+      <p>Via Largo Europa 152 - C.F. 90002890169</p>
+      <div class="social-icons">
+        <a href="https://www.facebook.com/gruppomicologicovilladogna" aria-label="Facebook"><img src="images/facebook.svg" alt="Facebook" /></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Schema.org per LocalBusiness -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Associazione Micologica Bresadola - Gruppo Villa d'Ogna",
+    "image": "https://www.ambvilladogna.it/images/logo.png",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Largo Europa, 152",
+      "addressLocality": "Villa d'Ogna",
+      "addressRegion": "BG",
+      "postalCode": "24020",
+      "addressCountry": "IT"
+    },
+    "email": "pierino.bigoni@gmail.com",
+    "telephone": "+39 3384277839",
+    "url": "https://www.ambvilladogna.it",
+    "openingHours": "Mo 21:00-22:30"
+  }
+  </script>
+
+  <script defer src="script.js"></script>
+  <script defer src="scriptcontatti.js"></script>
 </body>
 </html>
