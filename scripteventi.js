@@ -252,24 +252,25 @@ function applyFilters() {
     }
   
     events.forEach(event => {
-      const eventDate = new Date(event.start);
+      const startDate = new Date(event.start);
       let endDate = new Date(event.end);
   
-      // ✅ Correggi fine evento se è all-day di un solo giorno
-      const isAllDayEvent = eventDate.getHours() === 0 &&
-                            eventDate.getMinutes() === 0 &&
-                            endDate.getHours() === 0 &&
-                            endDate.getMinutes() === 0 &&
-                            (endDate.getTime() - eventDate.getTime()) === 86400000;
+      // Rileva se è un evento all-day
+      const isAllDayEvent =
+        startDate.getHours() === 0 &&
+        startDate.getMinutes() === 0 &&
+        endDate.getHours() === 0 &&
+        endDate.getMinutes() === 0;
   
-      if (isAllDayEvent) {
-        endDate = new Date(eventDate); // correggiamo la data finale
+      // Se è all-day e inizia e finisce in giorni diversi, correggi DTEND (esclusivo)
+      if (isAllDayEvent && startDate.toDateString() !== endDate.toDateString()) {
+        endDate.setDate(endDate.getDate() - 1);
       }
   
-      const isMultiDay = eventDate.toDateString() !== endDate.toDateString();
+      const isMultiDay = startDate.toDateString() !== endDate.toDateString();
   
-      const startDay = eventDate.getDate();
-      const startMonth = eventDate.toLocaleString('it', { month: 'short' });
+      const startDay = startDate.getDate();
+      const startMonth = startDate.toLocaleString('it', { month: 'short' });
       const endDay = endDate.getDate();
       const endMonth = endDate.toLocaleString('it', { month: 'short' });
   
@@ -277,19 +278,20 @@ function applyFilters() {
         ? `${startDay} ${startMonth} – ${endDay} ${endMonth}`
         : `${startDay} ${startMonth}`;
   
+      // Gestione dell'orario o del range
       let timeDisplay = '';
   
       if (isAllDayEvent) {
-        timeDisplay = `<i class="far fa-sun"></i> Tutto il giorno`;
+        timeDisplay = isMultiDay
+          ? `<i class="far fa-calendar-alt"></i> Dal ${startDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`
+          : `<i class="far fa-sun"></i> Tutto il giorno`;
       } else {
-        const isSameDay = eventDate.toDateString() === endDate.toDateString();
-  
-        if (isSameDay) {
-          const startTime = eventDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
+        if (isMultiDay) {
+          timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${startDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
+        } else {
+          const startTime = startDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
           const endTime = endDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
           timeDisplay = `<i class="far fa-clock"></i> ${startTime} - ${endTime}`;
-        } else {
-          timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
         }
       }
   
@@ -297,15 +299,18 @@ function applyFilters() {
       const badgeClass = event.isPrivate ? 'badge-private' : 'badge-public';
       const badgeText = event.isPrivate ? 'Privato' : 'Pubblico';
   
-      const recurringBadge = event.isRecurring ? 
-        `<span class="event-badge badge-recurring"><i class="fas fa-sync-alt"></i> Ricorrente</span>` : '';
+      const recurringBadge = event.isRecurring
+        ? `<span class="event-badge badge-recurring"><i class="fas fa-sync-alt"></i> Ricorrente</span>`
+        : '';
   
       const eventCard = document.createElement('div');
       eventCard.className = `event-card ${privateClass}`;
       eventCard.setAttribute('data-event-id', event.id);
       eventCard.innerHTML = `
         <div class="event-header">
-          <div class="event-date-large">${dateDisplay}</div>
+          <div class="event-date-large">
+            ${dateDisplay}
+          </div>
           <h3 class="event-title">${event.title}</h3>
           <div class="event-time">${timeDisplay}</div>
         </div>
@@ -324,7 +329,7 @@ function applyFilters() {
         </div>
       `;
   
-      eventCard.addEventListener('click', function() {
+      eventCard.addEventListener('click', function () {
         openEventModal(event);
       });
   
