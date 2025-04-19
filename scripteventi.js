@@ -256,17 +256,7 @@ function displayEvents(events) {
     const endDate = new Date(event.end);
     
     // Se evento dura più di 1 giorno, mostra intervallo
-    let isMultiDay = eventDate.toDateString() !== endDate.toDateString();
-
-    // Se è un evento all-day e la fine è a mezzanotte del giorno dopo, consideralo di 1 solo giorno
-    if (isMultiDay && isAllDayEvent) {
-      const diffMs = endDate - eventDate;
-      const oneDay = 24 * 60 * 60 * 1000;
-      if (diffMs === oneDay) {
-        isMultiDay = false;
-      }
-    }
-    
+    const isMultiDay = eventDate.toDateString() !== endDate.toDateString();
     
     const startDay = eventDate.getDate();
     const startMonth = eventDate.toLocaleString('it', { month: 'short' });
