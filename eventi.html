@@ -3,90 +3,139 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Eventi - Gruppo Micologico</title>
+    <title>Eventi e Attività Micologiche - Gruppo AMB Villa d'Ogna</title>
+    <meta name="description" content="Calendario completo degli eventi, escursioni guidate, mostre micologiche e incontri formativi organizzati dal Gruppo Micologico AMB Villa d'Ogna nella Val Seriana.">
+    <meta name="keywords" content="eventi micologici, escursioni funghi, mostra funghi, corsi micologia, uscite didattiche, calendario micologico, bergamo, villa d'ogna">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="Eventi e Attività Micologiche - Gruppo AMB Villa d'Ogna">
+    <meta property="og:description" content="Scopri il calendario delle nostre attività: escursioni guidate, mostre micologiche, corsi di formazione e incontri divulgativi sui funghi.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.gruppomicologicovilladogna.it/eventi.html">
+    <meta property="og:image" content="images/heroeventi1.webp">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://www.gruppomicologicovilladogna.it/eventi.html">
+    
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="styleeventi.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    
     <script defer src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/ical.js@1.5.0/build/ical.min.js"></script>
     <script defer src="scripteventi.js"></script>
 </head>
 <body>
-
     <!-- Navbar -->
     <header class="site-header logo-fullscreen">
         <div class="logo-wrapper">
-          <img src="images/logo.png" alt="Logo Associazione Micologica Bresadola - Villa d’Ogna" class="main-logo-big">
+            <img src="images/logo.png" alt="Logo Associazione Micologica Bresadola - Gruppo di Villa d'Ogna" class="main-logo-big">
         </div>
-      
-      
-      
         <button class="menu-toggle" aria-label="Apri menu">
-          <span></span>
-          <span></span>
-          <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </button>
-      </header>
-        <nav class="navbar">
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="chi_siamo.html">Chi siamo</a></li>
-                <li><a href="eventi.html" class="active"><img src="images/fungo_icon.png" alt="fungo" class="nav-fungo"> Eventi</a></li>
-                <li><a href="leggi.html"> Regolamenti 2025</a></li>
-                <li><a href="contatti.html">Contatti</a></li>
-                         </ul>
-        </nav>
-   
+    </header>
+    
+    <nav class="navbar" aria-label="Navigazione principale">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="chi_siamo.html">Chi siamo</a></li>
+            <li><a href="eventi.html" class="active"><img src="images/fungo_icon.png" alt="Icona fungo" class="nav-fungo"> Eventi</a></li>
+            <li><a href="leggi.html">Regolamenti 2025</a></li>
+            <li><a href="contatti.html">Contatti</a></li>
+        </ul>
+    </nav>
 
-    <!-- Hero Eventi -->
-    <section class="hero-carousel">
-        <div class="carousel-wrapper">
-          
-          <img src="images/heroeventi1.webp" class="carousel-img active" alt="Foto 2">
-          <img src="images/heroeventi2.webp" class="carousel-img" alt="Foto 3">
-          <img src="images/heroeventi3.webp" class="carousel-img" alt="Foto 6">
-          <img src="images/heroeventi4.webp" class="carousel-img" alt="Foto 5">
-          <img src="images/mostradelfungo.jpeg" class="carousel-img" alt="Foto 4">
-        </div>
-        <div class="carousel-overlay">
-          <h1>Le attività del gruppo</h1>
-          <p></p>
-        </div>
-      </section>
-    <div class="container events-container">
-        <div class="filters">
-            <div class="search-box">
-                <i class="fas fa-search search-icon"></i>
-                <input type="text" id="search-input" placeholder="Cerca eventi...">
+    <main>
+        <!-- Hero Eventi -->
+        <section class="hero-carousel" aria-label="Galleria fotografica degli eventi">
+            <div class="carousel-wrapper">
+                <img src="images/heroeventi1.webp" class="carousel-img active" alt="Esposizione funghi durante la mostra annuale">
+                <img src="images/heroeventi2.webp" class="carousel-img" alt="Escursione guidata nel bosco">
+                <img src="images/heroeventi3.webp" class="carousel-img" alt="Partecipanti durante un'attività formativa">
+                <img src="images/heroeventi4.webp" class="carousel-img" alt="Raccolta funghi educativa">
+                <img src="images/mostradelfungo.jpeg" class="carousel-img" alt="Mostra micologica annuale">
             </div>
-            <div class="filter-group">
-                <button class="filter-btn active" data-filter="public">Eventi pubblici in arrivo</button>
-                <button class="filter-btn" data-filter="all">Tutte le attività 2025</button>
-              </div>
+            <div class="carousel-overlay">
+                <h1>Le attività del gruppo</h1>
+                <p>Scopri gli eventi micologici organizzati durante l'anno</p>
+            </div>
+        </section>
+        
+        <div class="container events-container">
+            <div class="filters">
+                <div class="search-box">
+                    <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                    <input type="text" id="search-input" placeholder="Cerca eventi..." aria-label="Cerca eventi">
+                </div>
+                <div class="filter-group">
+                    <button class="filter-btn active" data-filter="public">Eventi pubblici in arrivo</button>
+                    <button class="filter-btn" data-filter="all">Tutte le attività 2025</button>
+                </div>
+            </div>
+            
+            <div id="events-grid" class="events-grid">
+                <div class="loading">
+                    <i class="fas fa-spinner" aria-hidden="true"></i> Caricamento eventi in corso...
+                </div>
+            </div>
         </div>
         
-        <div id="events-grid" class="events-grid">
-            <div class="loading">
-                <i class="fas fa-spinner"></i> Caricamento eventi in corso...
+        <div id="event-modal" class="modal" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
+            <div class="modal-content" id="modal-content">
+                <!-- Modal content will be dynamically added here -->
             </div>
         </div>
-    </div>
-    
-    <div id="event-modal" class="modal">
-        <div class="modal-content" id="modal-content">
-            <!-- Modal content will be dynamically added here -->
-        </div>
-    </div>
+    </main>
     
     <footer>
-      <div class="footer-content">
-          <p>© 2025 AMB Villa d'Ogna - Tutti i diritti riservati</p>
-          <div class="social-icons">
-              <a href="https://www.facebook.com/gruppomicologicovilladogna"><img src="images/facebook.svg" alt="Facebook"></a>
-              
-          </div>
-      </div>
-     
-  </footer>
-    </body>
+        <div class="footer-content">
+            <p>© 2025 AMB Villa d'Ogna - Tutti i diritti riservati</p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/gruppomicologicovilladogna" aria-label="Seguici su Facebook"><img src="images/facebook.svg" alt="Facebook"></a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Schema.org markup per gli eventi -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ItemList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "item": {
+                    "@type": "Event",
+                    "name": "Mostra Micologica Annuale",
+                    "startDate": "2025-08-23",
+                    "endDate": "2025-08-24",
+                    "location": {
+                        "@type": "Place",
+                        "name": "Sala Civica Villa d'Ogna",
+                        "address": {
+                            "@type": "PostalAddress",
+                            "addressLocality": "Villa d'Ogna",
+                            "addressRegion": "BG",
+                            "postalCode": "24020",
+                            "addressCountry": "IT"
+                        }
+                    },
+                    "organizer": {
+                        "@type": "Organization",
+                        "name": "Gruppo Micologico AMB Villa d'Ogna"
+                    },
+                    "description": "Esposizione annuale di funghi freschi con oltre 200 specie identificate e classificate"
+                }
+            }
+        ]
+    }
+    </script>
+</body>
 </html>
