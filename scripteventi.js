@@ -238,108 +238,102 @@ function applyFilters() {
   
     displayEvents(filteredEvents);
   }
-function displayEvents(events) {
-  eventsGrid.innerHTML = '';
-
-  if (events.length === 0) {
+  function displayEvents(events) {
+    eventsGrid.innerHTML = '';
+  
+    if (events.length === 0) {
       eventsGrid.innerHTML = `
-          <div class="no-events">
-              <i class="fas fa-calendar-times"></i>
-              <p>Nessun evento trovato</p>
-          </div>
+        <div class="no-events">
+          <i class="fas fa-calendar-times"></i>
+          <p>Nessun evento trovato</p>
+        </div>
       `;
       return;
-  }
-
-  events.forEach(event => {
-    const eventDate = new Date(event.start);
-    const endDate = new Date(event.end);
-    
-    // Se evento dura più di 1 giorno, mostra intervallo
-    const isMultiDay = eventDate.toDateString() !== endDate.toDateString();
-    
-    const startDay = eventDate.getDate();
-    const startMonth = eventDate.toLocaleString('it', { month: 'short' });
-    const endDay = endDate.getDate();
-const endMonth = endDate.toLocaleString('it', { month: 'short' });
-
-const dateDisplay = isMultiDay
-  ? `${startDay} ${startMonth} – ${endDay} ${endMonth}`
-  : `${startDay} ${startMonth}`;
-
-      // Controlla se l'evento è un evento che dura tutto il giorno
-      const isAllDayEvent = eventDate.getHours() === 0 && 
-                           eventDate.getMinutes() === 0 && 
-                           new Date(event.end).getHours() === 0 && 
-                           new Date(event.end).getMinutes() === 0 &&
-                           (new Date(event.end) - eventDate) >= 86400000; // 24 ore in millisecondi
-      
+    }
+  
+    events.forEach(event => {
+      const eventDate = new Date(event.start);
+      let endDate = new Date(event.end);
+  
+      // Correggi DTEND per eventi all-day di un solo giorno
+      const isAllDayEvent = eventDate.getHours() === 0 &&
+                            eventDate.getMinutes() === 0 &&
+                            endDate.getHours() === 0 &&
+                            endDate.getMinutes() === 0 &&
+                            (endDate - eventDate) >= 86400000;
+  
+      if (isAllDayEvent && endDate - eventDate === 86400000) {
+        endDate = new Date(endDate.getTime() - 1); // fine = giorno stesso
+      }
+  
+      const isMultiDay = eventDate.toDateString() !== endDate.toDateString();
+  
+      const startDay = eventDate.getDate();
+      const startMonth = eventDate.toLocaleString('it', { month: 'short' });
+      const endDay = endDate.getDate();
+      const endMonth = endDate.toLocaleString('it', { month: 'short' });
+  
+      const dateDisplay = isMultiDay
+        ? `${startDay} ${startMonth} – ${endDay} ${endMonth}`
+        : `${startDay} ${startMonth}`;
+  
       let timeDisplay = '';
-      
       if (isAllDayEvent) {
-          timeDisplay = `<i class="far fa-sun"></i> Tutto il giorno`;
-      } else {
-        const endDate = new Date(event.end);
-        const isSameDay = eventDate.toDateString() === endDate.toDateString();
-        
-        if (isAllDayEvent) {
-          if (isSameDay) {
-            timeDisplay = `<i class="far fa-sun"></i> Tutto il giorno`;
-          } else {
-            timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
-          }
+        if (isMultiDay) {
+          timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
         } else {
-          if (isSameDay) {
-            const startTime = eventDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
-            const endTime = endDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
-            timeDisplay = `<i class="far fa-clock"></i> ${startTime} - ${endTime}`;
-          } else {
-            timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
-          }
+          timeDisplay = `<i class="far fa-sun"></i> Tutto il giorno`;
+        }
+      } else {
+        if (isMultiDay) {
+          timeDisplay = `<i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}`;
+        } else {
+          const startTime = eventDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
+          const endTime = endDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
+          timeDisplay = `<i class="far fa-clock"></i> ${startTime} - ${endTime}`;
         }
       }
-
+  
       const privateClass = event.isPrivate ? 'private-event' : '';
       const badgeClass = event.isPrivate ? 'badge-private' : 'badge-public';
       const badgeText = event.isPrivate ? 'Privato' : 'Pubblico';
-      
-      // Aggiungi badge per eventi ricorrenti
+  
       const recurringBadge = event.isRecurring ? 
-          `<span class="event-badge badge-recurring"><i class="fas fa-sync-alt"></i> Ricorrente</span>` : '';
-
+        `<span class="event-badge badge-recurring"><i class="fas fa-sync-alt"></i> Ricorrente</span>` : '';
+  
       const eventCard = document.createElement('div');
       eventCard.className = `event-card ${privateClass}`;
       eventCard.setAttribute('data-event-id', event.id);
       eventCard.innerHTML = `
-  <div class="event-header">
-    <div class="event-date-large">
-  ${dateDisplay}
-</div>
-    <h3 class="event-title">${event.title}</h3>
-    <div class="event-time">${timeDisplay}</div>
-  </div>
-  <div class="event-body">
-    <p class="event-description">${event.description}</p>
-    <div class="event-location">
-      <i class="fas fa-map-marker-alt"></i> ${event.location}
-    </div>
-  </div>
-  <div class="event-footer">
-    <div class="event-badges">
-      <span class="event-badge ${badgeClass}">${badgeText}</span>
-      ${recurringBadge}
-    </div>
-    <a href="#" class="event-action">Dettagli <i class="fas fa-arrow-right"></i></a>
-  </div>
-`;
-
-      eventCard.addEventListener('click', function() {
-          openEventModal(event);
+        <div class="event-header">
+          <div class="event-date-large">
+            ${dateDisplay}
+          </div>
+          <h3 class="event-title">${event.title}</h3>
+          <div class="event-time">${timeDisplay}</div>
+        </div>
+        <div class="event-body">
+          <p class="event-description">${event.description}</p>
+          <div class="event-location">
+            <i class="fas fa-map-marker-alt"></i> ${event.location}
+          </div>
+        </div>
+        <div class="event-footer">
+          <div class="event-badges">
+            <span class="event-badge ${badgeClass}">${badgeText}</span>
+            ${recurringBadge}
+          </div>
+          <a href="#" class="event-action">Dettagli <i class="fas fa-arrow-right"></i></a>
+        </div>
+      `;
+  
+      eventCard.addEventListener('click', function () {
+        openEventModal(event);
       });
-
+  
       eventsGrid.appendChild(eventCard);
-  });
-}
+    });
+  }
   
 function openEventModal(event) {
   const eventDate = new Date(event.start);
