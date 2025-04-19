@@ -252,9 +252,20 @@ function displayEvents(events) {
   }
 
   events.forEach(event => {
-      const eventDate = new Date(event.start);
-      const day = eventDate.getDate();
-      const month = eventDate.toLocaleString('it', { month: 'short' });
+    const startDate = new Date(event.start);
+const endDate = new Date(event.end);
+
+// Se evento dura più di 1 giorno, mostra intervallo
+const isMultiDay = startDate.toDateString() !== endDate.toDateString();
+
+const startDay = startDate.getDate();
+const startMonth = startDate.toLocaleString('it', { month: 'short' });
+const endDay = endDate.getDate();
+const endMonth = endDate.toLocaleString('it', { month: 'short' });
+
+const dateDisplay = isMultiDay
+  ? `${startDay} ${startMonth} – ${endDay} ${endMonth}`
+  : `${startDay} ${startMonth}`;
 
       // Controlla se l'evento è un evento che dura tutto il giorno
       const isAllDayEvent = eventDate.getHours() === 0 && 
@@ -302,8 +313,8 @@ function displayEvents(events) {
       eventCard.innerHTML = `
   <div class="event-header">
     <div class="event-date-large">
-      ${day} <span class="month">${month}</span>
-    </div>
+  ${dateDisplay}
+</div>
     <h3 class="event-title">${event.title}</h3>
     <div class="event-time">${timeDisplay}</div>
   </div>
