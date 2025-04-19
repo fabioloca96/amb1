@@ -253,14 +253,14 @@ function displayEvents(events) {
 
   events.forEach(event => {
     const eventDate = new Date(event.start);
-const endDate = new Date(event.end);
-
-// Se evento dura più di 1 giorno, mostra intervallo
-const isMultiDay = startDate.toDateString() !== endDate.toDateString();
-
-const startDay = startDate.getDate();
-const startMonth = startDate.toLocaleString('it', { month: 'short' });
-const endDay = endDate.getDate();
+    const endDate = new Date(event.end);
+    
+    // Se evento dura più di 1 giorno, mostra intervallo
+    const isMultiDay = eventDate.toDateString() !== endDate.toDateString();
+    
+    const startDay = eventDate.getDate();
+    const startMonth = eventDate.toLocaleString('it', { month: 'short' });
+    const endDay = endDate.getDate();
 const endMonth = endDate.toLocaleString('it', { month: 'short' });
 
 const dateDisplay = isMultiDay
