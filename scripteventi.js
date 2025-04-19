@@ -252,7 +252,7 @@ function displayEvents(events) {
   }
 
   events.forEach(event => {
-    const startDate = new Date(event.start);
+    const eventDate = new Date(event.start);
 const endDate = new Date(event.end);
 
 // Se evento dura più di 1 giorno, mostra intervallo
