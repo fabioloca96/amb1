@@ -338,131 +338,120 @@ function applyFilters() {
   }
   
   
-function openEventModal(event) {
-  const eventDate = new Date(event.start);
-  const endDate = new Date(event.end);
-
-  const formattedDate = eventDate.toLocaleDateString('it', {
-      weekday: 'long',
-      day: 'numeric',
-      month: 'long',
-      year: 'numeric'
-  });
-
-  // Controlla se l'evento è un evento che dura tutto il giorno
-  const isAllDayEvent = eventDate.getHours() === 0 && 
-                       eventDate.getMinutes() === 0 && 
-                       endDate.getHours() === 0 && 
-                       endDate.getMinutes() === 0 &&
-                       (endDate - eventDate) >= 86400000; // 24 ore in millisecondi
+  function openEventModal(event) {
+    const startDate = new Date(event.start);
+    let endDate = new Date(event.end);
   
-  let timeDisplay = '';
+    const isAllDayEvent =
+      startDate.getHours() === 0 &&
+      startDate.getMinutes() === 0 &&
+      endDate.getHours() === 0 &&
+      endDate.getMinutes() === 0;
   
-  if (isAllDayEvent) {
-      timeDisplay = `<div class="modal-datetime">
-          <i class="far fa-sun"></i> Evento giornaliero
-      </div>`;
-  } else {
-    const isSameDay = eventDate.toDateString() === endDate.toDateString();
-
+    const isMultiDay = startDate.toDateString() !== endDate.toDateString();
+  
+    // Correggi DTEND per eventi all-day (esclusivo)
+    if (isAllDayEvent && isMultiDay) {
+      endDate.setDate(endDate.getDate() - 1);
+    }
+  
+    let timeDisplay = '';
+  
     if (isAllDayEvent) {
-      if (isSameDay) {
+      if (isMultiDay) {
         timeDisplay = `<div class="modal-datetime">
-          <i class="far fa-sun"></i> Evento giornaliero
+          <i class="far fa-calendar-alt"></i> Dal ${startDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}
         </div>`;
       } else {
         timeDisplay = `<div class="modal-datetime">
-          <i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}
+          <i class="far fa-sun"></i> Evento giornaliero
         </div>`;
       }
     } else {
-      if (isSameDay) {
-        const startTime = eventDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
+      if (isMultiDay) {
+        timeDisplay = `<div class="modal-datetime">
+          <i class="far fa-calendar-alt"></i> Dal ${startDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}
+        </div>`;
+      } else {
+        const startTime = startDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
         const endTime = endDate.toLocaleTimeString('it', { hour: '2-digit', minute: '2-digit' });
         timeDisplay = `<div class="modal-datetime">
           <i class="far fa-clock"></i> ${startTime} - ${endTime}
         </div>`;
-      } else {
-        timeDisplay = `<div class="modal-datetime">
-          <i class="far fa-calendar-alt"></i> Dal ${eventDate.toLocaleDateString('it')} al ${endDate.toLocaleDateString('it')}
-        </div>`;
       }
     }
-  }
-
-  const modalClass = event.isPrivate ? 'modal-private' : '';
-  const recurringInfo = event.isRecurring ? 
-      `<div class="info-item">
-          <div class="info-icon">
-              <i class="fas fa-sync-alt"></i>
-          </div>
-          <div class="info-content">
-              <div class="info-label">Tipo di evento</div>
-              <div class="info-value">Evento ricorrente</div>
-          </div>
+  
+    const formattedDate = startDate.toLocaleDateString('it', {
+      weekday: 'long',
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric'
+    });
+  
+    const modalClass = event.isPrivate ? 'modal-private' : '';
+    const recurringInfo = event.isRecurring ? `
+      <div class="info-item">
+        <div class="info-icon">
+          <i class="fas fa-sync-alt"></i>
+        </div>
+        <div class="info-content">
+          <div class="info-label">Tipo di evento</div>
+          <div class="info-value">Evento ricorrente</div>
+        </div>
       </div>` : '';
-
-  modalContent.innerHTML = `
+  
+    modalContent.innerHTML = `
       <div class="${modalClass}">
-          <div class="modal-header">
-              <button class="modal-close" onclick="closeModal()">
-                  <i class="fas fa-times"></i>
-              </button>
-              <h2 class="modal-title">${event.title}</h2>
-              <div class="modal-datetime">
-                  <i class="far fa-calendar-alt"></i> ${formattedDate}
-              </div>
-              ${timeDisplay}
+        <div class="modal-header">
+          <button class="modal-close" onclick="closeModal()">
+            <i class="fas fa-times"></i>
+          </button>
+          <h2 class="modal-title">${event.title}</h2>
+          <div class="modal-datetime">
+            <i class="far fa-calendar-alt"></i> ${formattedDate}
           </div>
-          <div class="modal-body">
-              <div class="modal-description">
-                  ${event.description.replace(/\n/g, '<br>')}
-              </div>
-              <div class="modal-info">
-                  <div class="info-item">
-                      <div class="info-icon">
-                          <i class="fas fa-map-marker-alt"></i>
-                      </div>
-                      <div class="info-content">
-                          <div class="info-label">Luogo</div>
-                          <div class="info-value">${event.location}</div>
-                      </div>
-                  </div>
-                  <div class="info-item">
-                      <div class="info-icon">
-                          <i class="fas fa-user"></i>
-                      </div>
-                      <div class="info-content">
-                          <div class="info-label">Organizzatore</div>
-                          <div class="info-value">${event.organizer}</div>
-                      </div>
-                  </div>
-                  ${recurringInfo}
-                  ${event.image ? `<div class="info-item">
-                      <div class="info-icon">
-                          <i class="fas fa-image"></i>
-                      </div>
-                      <div class="info-content">
-                          <div class="info-label">Immagine Evento</div>
-                          <img src="${event.image}" alt="Immagine Evento" class="modal-event-image">
-                      </div>
-                  </div>` : ''}
-              </div>
-              <div class="modal-actions">
-                  <button class="btn btn-primary" onclick="addToCalendar(event)">
-                      <i class="far fa-calendar-plus"></i> Aggiungi al calendario
-                  </button>
-                  ${event.url ? `<a href="${event.url}" target="_blank" class="btn btn-outline">
-                      <i class="fas fa-external-link-alt"></i> Vai all'evento
-                  </a>` : ''}
-              </div>
+          ${timeDisplay}
+        </div>
+        <div class="modal-body">
+          <div class="modal-description">
+            ${event.description.replace(/\n/g, '<br>')}
           </div>
+          <div class="modal-info">
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="info-content">
+                <div class="info-label">Luogo</div>
+                <div class="info-value">${event.location}</div>
+              </div>
+            </div>
+            <div class="info-item">
+              <div class="info-icon">
+                <i class="fas fa-user"></i>
+              </div>
+              <div class="info-content">
+                <div class="info-label">Organizzatore</div>
+                <div class="info-value">${event.organizer}</div>
+              </div>
+            </div>
+            ${recurringInfo}
+          </div>
+          <div class="modal-actions">
+            <button class="btn btn-primary" onclick="addToCalendar(event)">
+              <i class="far fa-calendar-plus"></i> Aggiungi al calendario
+            </button>
+            ${event.url ? `<a href="${event.url}" target="_blank" class="btn btn-outline">
+              <i class="fas fa-external-link-alt"></i> Vai all'evento
+            </a>` : ''}
+          </div>
+        </div>
       </div>
-  `;
-
-  modal.style.display = 'flex';
-  document.body.style.overflow = 'hidden';
-}
+    `;
+  
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
   
   
   function showError(message) {
