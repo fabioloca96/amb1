@@ -351,7 +351,7 @@
 
 @media (max-width: 768px) {
   .hero {
-    height: 80vh; /* oppure 100vh per fullscreen */
+    height: 100vh; /* oppure 100vh per fullscreen */
     background-size: cover;
     background-position: center;
   }
