@@ -388,3 +388,10 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .hero {
+    min-height: 80vh; /* o anche 100vh se vuoi usare tutto lo schermo */
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
