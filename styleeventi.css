@@ -11,9 +11,12 @@
 }
 .hero-carousel {
   position: relative;
-  height: 80vh;
+  width: 100%;
+  aspect-ratio: 16/9;
+  max-height: 90vh;
   overflow: hidden;
 }
+
 
 .carousel-wrapper {
   height: 100%;
@@ -368,5 +371,12 @@
     .event-card {
       width: 90%;
     }
+  .carousel-overlay h1 {
+    font-size: 2rem;
   }
+
+  .carousel-overlay p {
+    font-size: 1rem;
+  }
+}
 
