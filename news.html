@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News - Gruppo Micologico AMB Villa d'Ogna</title>
+    <meta name="description" content="Ultime notizie, scoperte e aggiornamenti dal Gruppo Micologico AMB Villa d'Ogna. Resta aggiornato sulle nostre attività, ricerche e eventi.">
+    <meta name="keywords" content="news micologia, notizie funghi, AMB Villa d'Ogna news, aggiornamenti micologici, scoperte funghi">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:title" content="News - Gruppo Micologico AMB Villa d'Ogna">
+    <meta property="og:description" content="Ultime notizie e aggiornamenti dal mondo della micologia in Val Seriana.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ambvilladogna.it/news.html">
+    
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="stylenews.css">
+    <script defer src="script.js"></script>
+    <script defer src="scriptnews.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Poppins:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+   <!-- HEADER -->
+   <header class="site-header logo-fullscreen">
+    <div class="logo-wrapper">
+      <img src="images/logo.png" alt="Logo Associazione Micologica Bresadola - Gruppo di Villa d'Ogna" class="main-logo-big">
+    </div>
+    <button class="menu-toggle" aria-label="Apri menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+  
+  <!-- NAVBAR -->
+  <nav class="navbar" aria-label="Navigazione principale">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="chi_siamo.html">Chi siamo</a></li>
+      <li><a href="eventi.html">Eventi</a></li>
+      <li><a href="news.html" class="active"><img src="images/fungo_icon.png" alt="Icona fungo" class="nav-fungo">News</a></li>
+      <li><a href="leggi.html">Regolamenti 2025</a></li>
+      <li><a href="contatti.html">Contatti</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <!-- Hero Section News -->
+    <section class="news-hero">
+        <div class="news-hero__content fade-in">
+            <h1 class="news-hero__title">Le nostre News</h1>
+            <p class="news-hero__subtitle">Scoperte, eventi e aggiornamenti dal mondo della micologia</p>
+        </div>
+    </section>
+
+    <!-- News Grid -->
+    <section class="news-section">
+        <div class="news-container">
+            <!-- Filtri -->
+            <div class="news-filters fade-in">
+                <button class="filter-btn active" data-category="all">Tutte</button>
+                <button class="filter-btn" data-category="scoperte">Scoperte</button>
+                <button class="filter-btn" data-category="eventi">Eventi</button>
+                <button class="filter-btn" data-category="educazione">Educazione</button>
+                <button class="filter-btn" data-category="ricerca">Ricerca</button>
+            </div>
+
+            <!-- News Grid -->
+            <div class="news-grid" id="news-grid">
+                <!-- Gli articoli verranno caricati dinamicamente -->
+            </div>
+
+            <!-- Paginazione -->
+            <div class="pagination" id="pagination">
+                <!-- La paginazione verrà generata dinamicamente -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal per articolo completo -->
+    <div class="news-modal" id="news-modal">
+        <div class="news-modal__content">
+            <button class="news-modal__close">&times;</button>
+            <div class="news-modal__body" id="modal-body">
+                <!-- Contenuto dell'articolo verrà caricato qui -->
+            </div>
+        </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+      <div class="footer-content">
+            <p>© 2025 Associazione Micologica Bresadola - Gruppo di Villa d'Ogna - Tutti i diritti riservati</p>
+            <p>Largo Europa 152 - C.F. 90002890169</p>
+              <div class="social-icons">
+              <a href="https://www.facebook.com/gruppomicologicovilladogna" aria-label="Seguici su Facebook"><img src="images/facebook.svg" alt="Facebook"></a>
+          </div>
+      </div>
+  </footer>
+
+  <!-- Schema.org markup per gli articoli -->
+  <script type="application/ld+json" id="news-schema">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "News - Gruppo Micologico AMB Villa d'Ogna",
+    "description": "Notizie e aggiornamenti dal Gruppo Micologico AMB Villa d'Ogna",
+    "url": "https://www.ambvilladogna.it/news.html",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Associazione Micologica Bresadola - Villa d'Ogna",
+      "logo": "https://www.ambvilladogna.it/images/logo.png"
+    }
+  }
+  </script>
+</body>
+</html>
