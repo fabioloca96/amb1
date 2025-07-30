@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+  "title": "49ª Mostra del Fungo e della Natura 2025",
+  "excerpt": "Dal 9 al 17 Agosto 2025 torna la tradizionale Mostra del Fungo e della Natura di Villa d'Ogna. Un evento imperdibile che celebra la biodiversità del nostro territorio con esposizioni, laboratori e degustazioni.",
+  "category": "eventi",
+  "date": "2025-07-30",
+  "author": "Gruppo Micologico AMB Villa d'Ogna",
+    "featured_image": "/images/mostradelfungo.jpeg",
+   "content": [
+    {
+      "type": "paragraph",
+      "text": "Siamo orgogliosi di annunciare la 49ª edizione della Mostra del Fungo e della Natura, che si terrà dal 9 al 17 agosto 2025 presso il centro di Villa d'Ogna. Un appuntamento che da quasi mezzo secolo rappresenta il cuore pulsante della nostra comunità micologica."
+    },
+      {
+        "type": "image",
+        "src": "images/amanita_habitat.jpg",
+        "alt": "Mostra del fungo 2024",
+        "width": "80%",
+        "margin": "30px auto"
+      },
+     {
+      "type": "heading",
+      "level": 2,
+      "text": "Come raggiungerci"
+    },
+    {
+      "type": "paragraph",
+      "text": "La mostra si svolge presso le scuole elementari di Villa d'Ogna (Via Largo Europa 70), facilmente raggiungibile sia in auto che con i mezzi pubblici. Sono previsti parcheggi gratuiti nelle vicinanze."
+    },
+     {
+      "type": "paragraph",
+      "text": "Vi aspettiamo numerosi per celebrare insieme la bellezza e la ricchezza micologica della nostra valle"
+    },
+     {
+      "type": "quote",
+      "text": "Quarantanove anni di passione, ricerca e divulgazione. La Mostra del Fungo continua a essere il punto di riferimento per tutti gli amanti della natura in Valle Seriana."
+    }
+    ]
+  }
+  
+]
