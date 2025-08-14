@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-  "title": "49ª Mostra del Fungo e della Natura 2025",
-  "excerpt": "Dal 9 al 17 Agosto 2025 torna la tradizionale Mostra del Fungo e della Natura di Villa d'Ogna. Un evento imperdibile che celebra la biodiversità del nostro territorio con esposizioni, laboratori e degustazioni.",
-  "category": "eventi",
-  "date": "2025-07-30",
-  "author": "Gruppo Micologico AMB Villa d'Ogna",
+    "title": "49ª Mostra del Fungo e della Natura 2025",
+    "excerpt": "Dal 9 al 17 Agosto 2025 torna la tradizionale Mostra del Fungo e della Natura di Villa d'Ogna. Un evento imperdibile che celebra la biodiversità del nostro territorio con esposizioni, laboratori e degustazioni.",
+    "category": "eventi",
+    "date": "2025-07-30",
+    "author": "Gruppo Micologico AMB Villa d'Ogna",
     "featured_image": "/images/mostradelfungo.jpeg",
-   "content": [
-    {
-      "type": "paragraph",
-      "text": "Siamo orgogliosi di annunciare la 49ª edizione della Mostra del Fungo e della Natura, che si terrà dal 9 al 17 agosto 2025 presso il centro di Villa d'Ogna. Un appuntamento che da quasi mezzo secolo rappresenta il cuore pulsante della nostra comunità micologica."
-    },
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Siamo orgogliosi di annunciare la 49ª edizione della Mostra del Fungo e della Natura, che si terrà dal 9 al 17 agosto 2025 presso il centro di Villa d'Ogna. Un appuntamento che da quasi mezzo secolo rappresenta il cuore pulsante della nostra comunità micologica."
+      },
       {
         "type": "image",
         "src": "images/amanita_habitat.jpg",
@@ -19,24 +19,143 @@
         "width": "80%",
         "margin": "30px auto"
       },
-     {
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Come raggiungerci"
+      },
+      {
+        "type": "paragraph",
+        "text": "La mostra si svolge presso le scuole elementari di Villa d'Ogna (Via Largo Europa 70), facilmente raggiungibile sia in auto che con i mezzi pubblici. Sono previsti parcheggi gratuiti nelle vicinanze."
+      },
+      {
+        "type": "paragraph",
+        "text": "Vi aspettiamo numerosi per celebrare insieme la bellezza e la ricchezza micologica della nostra valle"
+      },
+      {
+        "type": "quote",
+        "text": "Quarantanove anni di passione, ricerca e divulgazione. La Mostra del Fungo continua a essere il punto di riferimento per tutti gli amanti della natura in Valle Seriana."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "ATS Bergamo attiva l'Ispettorato Micologico per la stagione 2025",
+    "excerpt": "Dal 18 agosto al 28 novembre 2025, l'Agenzia di Tutela della Salute di Bergamo offre gratuitamente il servizio di verifica di commestibilità dei funghi raccolti. Tre sedi operative su tutto il territorio provinciale.",
+    "category": "servizi",
+    "date": "2025-08-08",
+    "author": "ATS Bergamo",
+    "featured_image": "/images/cesto_funghi.jpg",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Con l'inizio della stagione dei funghi, l'Agenzia di Tutela della Salute di Bergamo attiva i punti dell'Ispettorato Micologico sul territorio provinciale. Da lunedì 18 agosto fino a venerdì 28 novembre, i cittadini che hanno raccolto funghi, li hanno ricevuti in regalo o acquistati al di fuori dei normali circuiti commerciali potranno rivolgersi gratuitamente negli uffici di Bergamo, Trescore Balneario e Treviglio."
+      },
+      {
+        "type": "image",
+        "src": "images/micologo_lavoro.jpg",
+        "alt": "Tecnico della Prevenzione al lavoro nell'Ispettorato Micologico",
+        "width": "70%",
+        "margin": "25px auto"
+      },
+      {
+        "type": "paragraph",
+        "text": "L'attività viene svolta da Tecnici della Prevenzione del Dipartimento di Igiene e Prevenzione Sanitaria di ATS, abilitati all'esercizio di Ispettore Micologo dopo un percorso teorico-pratico specializzato. Per fissare l'appuntamento nelle sedi di Bergamo e Trescore Balneario è possibile utilizzare l'apposita piattaforma online raggiungibile tramite QR CODE o procedere telefonicamente."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Sedi, orari e contatti"
+      },
+      {
+        "type": "paragraph",
+        "text": "BERGAMO - via Borgo Palazzo, 130 - Pad. 9 | Tel: 035-2270.586 | Lunedì, Martedì, Giovedì h. 14:00-16:00"
+      },
+      {
+        "type": "paragraph",
+        "text": "TRESCORE BALNEARIO - via Ospedale, 38 | Tel: 035-2270.586 | Lunedì, Mercoledì h. 14:00-16:00"
+      },
+      {
+        "type": "paragraph",
+        "text": "TREVIGLIO - via S. Giovanni Bosco, 3 | Tel: 035-385.163 | Orario definito a seguito di appuntamento telefonico"
+      },
+      {
+        "type": "image",
+        "src": "images/funghi_analisi.jpg",
+        "alt": "Funghi preparati per l'analisi di commestibilità",
+        "width": "60%",
+        "margin": "20px auto"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "Indicazioni per l'analisi"
+      },
+      {
+        "type": "paragraph",
+        "text": "Il fungo appena raccolto deve essere pulito sommariamente e conservato in frigorifero (non in cantina) senza sacchetti di plastica. Fino al momento della consegna all'Ispettorato - che deve avvenire il prima possibile - non deve essere sgambato, né pulito, né lavato, né precotto."
+      },
+      {
+        "type": "paragraph",
+        "text": "L'esperto micologo rilascerà una certificazione di commestibilità fornendo specifiche indicazioni sulla corretta conservazione e trattamento termico. I funghi non commestibili, tossici o velenosi verranno inviati a distruzione. Nel 2024 sono state rilasciate 220 certificazioni, confermando l'importanza di questo servizio per la sicurezza alimentare."
+      },
+      {
+        "type": "quote",
+        "text": "L'Ispettorato micologico garantisce consulenze H24 ai Presidi Ospedalieri provinciali per un tempestivo riconoscimento delle specie fungine in caso di sospetta intossicazione."
+      }
+    ]
+  },
+  {
+  "id": 3,
+  "title": "Inaugurata la 49ª Mostra del Fungo: oltre 260 specie in esposizione",
+  "excerpt": "Aperta al pubblico la tradizionale manifestazione di Villa d'Ogna. Il primo giorno di mostra sono gia state identificate ed esposte oltre 260 specie fungine diverse, tra cui rare scoperte locali e un porcino da record.",
+  "category": "eventi",
+  "date": "2025-08-09",
+  "author": "Gruppo Micologico AMB Villa d'Ogna",
+  "featured_image": "/images/mostradelfungo.jpeg",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Si è aperta ieri la 49ª edizione della Mostra del Fungo e della Natura di Villa d'Ogna. Quest'anno l'esposizione presenta già oltre 260 specie fungine diverse, accuratamente classificate dai membri del Gruppo Micologico AMB e disposte nelle sale delle scuole elementari."
+    },
+    
+    {
+      "type": "paragraph",
+      "text": "La raccolta di quest'anno ha beneficiato delle condizioni climatiche favorevoli dell'estate, permettendo di esporre anche alcune specie particolarmente rare per il territorio bergamasco: la Ramaria parabotrytis, scoperta solo nel 2017; la Russula camarophylla, primo ritrovamento italiano nella pineta di Piario; e un esemplare di porcino dal peso eccezionale di 1,32 kg."
+    },
+    {
+      "type": "image",
+      "src": "images/ramariaparabotrytis.jpg",
+      "alt": "Ramaria parabortytis",
+      "width": "80%",
+      "margin": "25px auto"
+    },
+    {
       "type": "heading",
       "level": 2,
-      "text": "Come raggiungerci"
+      "text": "Programma della settimana"
+    },
+    
+    {
+      "type": "paragraph",
+      "text": "La mostra prosegue fino al 17 agosto con il consueto programma. Gli orari di apertura sono dalle 9:00 alle 19:00 tutti i giorni."
+    },
+    {
+      "type": "image",
+      "src": "images/visitatori_mostra.jpg",
+      "alt": "Visitatori alla mostra del fungo",
+      "width": "70%",
+      "margin": "20px auto"
     },
     {
       "type": "paragraph",
-      "text": "La mostra si svolge presso le scuole elementari di Villa d'Ogna (Via Largo Europa 70), facilmente raggiungibile sia in auto che con i mezzi pubblici. Sono previsti parcheggi gratuiti nelle vicinanze."
+      "text": "I micologi esperti del gruppo saranno disponibili per consulenze e riconoscimento di esemplari portati dai visitatori. L'ingresso è gratuito e la manifestazione è aperta a tutti gli interessati alla natura e alla micologia. Vi aspettiamo numerosi per condividere insieme la bellezza e la ricchezza micologica del nostro territorio!"
     },
-     {
-      "type": "paragraph",
-      "text": "Vi aspettiamo numerosi per celebrare insieme la bellezza e la ricchezza micologica della nostra valle"
-    },
-     {
+    {
       "type": "quote",
-      "text": "Quarantanove anni di passione, ricerca e divulgazione. La Mostra del Fungo continua a essere il punto di riferimento per tutti gli amanti della natura in Valle Seriana."
+      "text": "oltre 260 specie esposte, tra cui esemplari rari e curiosi, testimoniano la straordinaria biodiversità della nostra valle."
     }
-    ]
-  }
-  
+  ]
+}
+
 ]

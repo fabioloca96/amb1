@@ -24,7 +24,7 @@
     z-index: 1;
 }
 
-/* Assicura che il contenuto sia sopra l’overlay */
+/* Assicura che il contenuto sia sopra l'overlay */
 .hero-leggi .hero__content {
     position: relative;
     z-index: 2;
@@ -43,27 +43,202 @@
     text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
+/* === NOVITÀ 2025: Sezione Ispettorato Micologico === */
+.ispettorato-news {
+    background: linear-gradient(135deg, #e8f5e8 0%, #f0f9ff 100%);
+    border-radius: 15px;
+    margin: 2rem auto;
+    padding: 0;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 1200px;
+    width: 100%;
+}
+
+.news-banner {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    padding: 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.news-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 10px,
+        rgba(255,255,255,0.1) 10px,
+        rgba(255,255,255,0.1) 20px
+    );
+    animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.news-banner h2 {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    position: relative;
+    z-index: 2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+}
+
+.news-highlight {
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+    background: rgba(255,255,255,0.2);
+    padding: 1rem;
+    border-radius: 10px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.ispettorato-content {
+    padding: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.ispettorato-content h3 {
+    color: #16a34a;
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.ispettorato-content h4 {
+    color: #15803d;
+    font-size: 1.4rem;
+    margin: 2rem 0 1rem 0;
+    border-left: 4px solid #22c55e;
+    padding-left: 1rem;
+}
+
+.ispettorato-content h5 {
+    color: #166534;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Sedi Ispettorato */
+.sedi-ispettorato {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+    margin: 2rem auto;
+    max-width: 1000px;
+    justify-items: center;
+}
+
+.sede-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    border-left: 5px solid #22c55e;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: 100%;
+    max-width: 320px;
+}
+
+.sede-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.sede-card p {
+    margin: 0.5rem 0;
+    font-size: 1rem;
+}
+
+.sede-card a {
+    color: #16a34a;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.sede-card a:hover {
+    text-decoration: underline;
+}
+
+/* Box speciali */
+.prenotazione-box, .preparazione-funghi, .emergenze-box {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 12px;
+    margin: 1.5rem auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    max-width: 900px;
+}
+
+.prenotazione-box {
+    border-left: 5px solid #3b82f6;
+}
+
+.preparazione-funghi {
+    border-left: 5px solid #f59e0b;
+}
+
+.emergenze-box {
+    border-left: 5px solid #ef4444;
+}
+
+.warning-box {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 1rem auto;
+    max-width: 800px;
+}
+
+.warning-box p {
+    margin-bottom: 1rem;
+    font-weight: bold;
+    color: #92400e;
+}
+
+.warning-box ul {
+    margin: 0;
+    color: #92400e;
+}
+
+/* === Sezioni esistenti === */
 .contributi {
     padding: 2rem 1rem;
     max-width: 900px;
     margin: 0 auto;
-  }
-  
-  .contributi h2 {
+}
+
+.contributi h2 {
     font-size: 2rem;
-    color: var(--primary);
+    color: var(--primary, #16a34a);
     margin-bottom: 1rem;
-  }
-  
-  .contributi ul {
+}
+
+.contributi ul {
     margin: 1rem 0 2rem;
     padding-left: 1.2rem;
-  }
-  
-  .tariffe-list li {
+}
+
+.tariffe-list li {
     margin-bottom: 0.8rem;
     font-size: 1.1rem;
-  }
+}
+
 /* Sezioni con margine per separazione */
 section {
     padding: 50px 20px;
@@ -170,14 +345,52 @@ footer {
     text-align: center;
     padding: 20px;
 }
-@media (max-width: 600px) {
-    .hero__title {
-      font-size: 2.2rem;
-    }
-  
-    .hero__subtitle {
-      font-size: 1.2rem;
-    }
-  }
 
 /* Media Query per dispositivi mobili */
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: 2.2rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1.2rem;
+    }
+
+    .news-banner h2 {
+        font-size: 1.8rem;
+    }
+
+    .news-highlight {
+        font-size: 1rem;
+    }
+
+    .sedi-ispettorato {
+        grid-template-columns: 1fr;
+    }
+
+    .sede-card, .prenotazione-box, .preparazione-funghi, .emergenze-box {
+        padding: 1rem;
+    }
+
+    .ispettorato-content {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .hero__title {
+        font-size: 1.8rem;
+    }
+
+    .hero__subtitle {
+        font-size: 1rem;
+    }
+
+    .news-banner {
+        padding: 1.5rem;
+    }
+
+    .news-banner h2 {
+        font-size: 1.6rem;
+    }
+}
