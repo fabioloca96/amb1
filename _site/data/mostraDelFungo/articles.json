@@ -2,38 +2,31 @@
   {
     "id": 1,
     "title": "49ª Mostra del Fungo e della Natura 2025",
-    "slug": "49-mostra-del-fungo-e-della-natura-2025",
-    "excerpt": "Dal 9 al 17 Agosto 2025 torna la tradizionale Mostra del Fungo e della Natura di Villa d'Ogna.",
+    "excerpt": "Dal 9 al 17 Agosto 2025 torna la tradizionale Mostra del Fungo e della Natura di Villa d'Ogna. Un evento imperdibile che celebra la biodiversità del nostro territorio con esposizioni, laboratori e degustazioni.",
     "category": "eventi",
     "date": "2025-07-30",
     "author": "Gruppo Micologico AMB Villa d'Ogna",
     "featured_image": "/images/mostradelfungo.jpeg",
-    "htmlContent": "mostraDelFungo.html",
-    "status": "published"
+    "htmlContent": "mostraDelFungo.html"
   },
   {
     "id": 2,
     "title": "Avvio Ispettorato Micologico - 2025",
-    "slug": "avvio-ispettorato-micologico-2025",
     "excerpt": "Come, dove e quando fare controllare i funghi raccolti.",
     "category": "eventi",
     "date": "2025-08-08",
     "author": "Gruppo Micologico AMB Villa d'Ogna",
     "featured_image": "/images/avvioIspettorato2025.jpg",
-    "htmlContent": "avvioIspettorato2025.html",
-    "status": "published"
+    "htmlContent": "avvioIspettorato2025.html"
   },
   {
     "id": 3,
-    "title": "Porcini",
-    "slug": "porcini",
-    "excerpt": "Ciao ciao",
+    "title": "49ª Mostra del Fungo e della Natura 2025",
+    "excerpt": "Come ci vedono i nostri fan.",
     "category": "eventi",
-    "date": "2025-08-14",
+    "date": "2025-08-13",
     "author": "Gruppo Micologico AMB Villa d'Ogna",
-    "featured_image": "/images/default.jpg",
-    "htmlContent": "porcini.html",
-    "status": "draft",
-    "tags": []
+    "featured_image": "/images/italieParIciAug2025.jpg",
+    "htmlContent": "italieParIciAug2025.html"
   }
 ]

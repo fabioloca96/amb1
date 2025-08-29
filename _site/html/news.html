@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News | Gruppo Micologico</title>
+  <link rel="stylesheet" href="/assets/css/styles.css">
+</head>
+<body>
+ <!-- HEADER -->
+<header class="site-header">
+  <div class="logo-wrapper">
+    <a href="./index.html">
+      <img src="/assets/images/logo.png" 
+           alt="Logo Associazione Micologica Bresadola - Gruppo di Villa d'Ogna" 
+           class="main-logo" loading="lazy">
+    </a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" aria-label="Navigazione principale">
+    <ul>
+      <li><a href="/html/index.html" >Home
+      </a></li>
+      <li><a href="/html/chi_siamo.html">Chi siamo</a></li>
+      <li><a href="/html/news.html" class="active">  <img src="/assets/images/fungo_icon.png" alt="Icona fungo" class="nav-fungo" loading="lazy">News</a></li>
+      <li><a href="/html/eventi.html">Calendario</a></li>
+      <li><a href="/html//leggi.html">Regolamenti 2025</a></li>
+      <li><a href="/html/riviste.html">Riviste</a></li>
+      <li><a href="/html/contatti.html">Contatti</a></li>
+    </ul>
+  </nav>
+
+  <!-- Pulsante menu mobile -->
+  <button class="menu-toggle" aria-label="Apri menu" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</header>
+    
+       
+      
+    </div>
+  </header>
+
+  <main class="content">
+    <link rel="stylesheet" href="../stylesheets/news.css"> 
+<section class="news-hero">
+  <div class="news-hero__content">
+    <h1 class="news-hero__title">Le Nostre Storie</h1>
+    <p class="news-hero__subtitle">Scopri le ultime novità dal mondo dei funghi e della micologia</p>
+  </div>
+</section>
+
+<section class="news-main">
+  <div class="container">
+    <!-- Filtri e Ricerca -->
+    <div class="news-controls">
+      <div class="search-box">
+        <input type="text" placeholder="Cerca negli articoli..." id="searchInput">
+        <button class="search-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Tutti</button>
+        <button class="filter-btn" data-filter="eventi">Eventi</button>
+        <button class="filter-btn" data-filter="ricerca">Ricerca</button>
+        <button class="filter-btn" data-filter="educazione">Educazione</button>
+      </div>
+    </div>
+
+    <!-- Griglia degli Articoli -->
+    <div class="news-masonry" id="newsGrid">
+      
+        <article class="news-item fade-in" data-category="generale">
+          <div class="news-item__image">
+            
+              <img src="/assets/images/escursionebelloro.jpeg" alt="Escursione Naturalistico-Micologica sul Monte Belloro" loading="lazy">
+            
+            <div class="news-item__overlay">
+              <span class="news-item__date">29 Aug 2025</span>
+              
+            </div>
+          </div>
+          
+          <div class="news-item__content">
+            <h3 class="news-item__title">
+              <a href="/2025/08/29/gitabelloro.html">Escursione Naturalistico-Micologica sul Monte Belloro</a>
+            </h3>
+            <p class="news-item__excerpt">
+</p>
+            
+            <div class="news-item__footer">
+              <a href="/2025/08/29/gitabelloro.html" class="read-more">
+                Leggi tutto
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
+                </svg>
+              </a>
+              
+            </div>
+          </div>
+        </article>
+      
+        <article class="news-item fade-in" data-category="generale">
+          <div class="news-item__image">
+            
+              <img src="/assets/images/giornatadellamicologia.jpg" alt="24ª Giornata Nazionale della Micologia a Villa d'Ogna" loading="lazy">
+            
+            <div class="news-item__overlay">
+              <span class="news-item__date">28 Aug 2025</span>
+              
+            </div>
+          </div>
+          
+          <div class="news-item__content">
+            <h3 class="news-item__title">
+              <a href="/2025/08/28/Giornatadellamicologia.html">24ª Giornata Nazionale della Micologia a Villa d'Ogna</a>
+            </h3>
+            <p class="news-item__excerpt">
+</p>
+            
+            <div class="news-item__footer">
+              <a href="/2025/08/28/Giornatadellamicologia.html" class="read-more">
+                Leggi tutto
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
+                </svg>
+              </a>
+              
+            </div>
+          </div>
+        </article>
+      
+        <article class="news-item fade-in" data-category="generale">
+          <div class="news-item__image">
+            
+              <img src="/assets/images/cestino.jpg" alt="ATS Bergamo attiva l'Ispettorato Micologico per la stagione 2025" loading="lazy">
+            
+            <div class="news-item__overlay">
+              <span class="news-item__date">08 Aug 2025</span>
+              
+            </div>
+          </div>
+          
+          <div class="news-item__content">
+            <h3 class="news-item__title">
+              <a href="/2025/08/08/atsispettoratomicologico.html">ATS Bergamo attiva l'Ispettorato Micologico per la stagione 2025</a>
+            </h3>
+            <p class="news-item__excerpt">Con l’inizio della stagione dei funghi, l’Agenzia di Tutela della Salute di Bergamo attiva i punti dell’Ispettorato Micologico sul territorio provinciale. Da lunedì 18 agosto...</p>
+            
+            <div class="news-item__footer">
+              <a href="/2025/08/08/atsispettoratomicologico.html" class="read-more">
+                Leggi tutto
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
+                </svg>
+              </a>
+              
+            </div>
+          </div>
+        </article>
+      
+    </div>
+
+    <!-- Pulsante Carica Altri (funzionante) -->
+    <div class="load-more-section" id="loadMoreSection">
+      <button class="load-more-btn" id="loadMoreBtn" onclick="loadMorePosts()">
+        <span class="btn-text">Carica altri articoli</span>
+        <div class="btn-spinner" style="display: none;">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+
+    <!-- Sezione Newsletter -->
+    <div class="newsletter-section">
+      <div class="newsletter-card">
+        <div class="newsletter-icon">📧</div>
+        <h3>Resta aggiornato</h3>
+        <p>Iscriviti alla nostra newsletter per ricevere le ultime novità dal mondo della micologia</p>
+        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+          <input type="email" placeholder="La tua email" required>
+          <button type="submit">Iscriviti</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Stato della paginazione
+let currentPage = 1;
+const postsPerPage = 6;
+let allPosts = [];
+let filteredPosts = [];
+let currentFilter = 'all';
+
+// Inizializzazione
+document.addEventListener('DOMContentLoaded', function() {
+  initializeNews();
+  setupAnimations();
+  setupFilters();
+  setupSearch();
+});
+
+function initializeNews() {
+  const newsItems = document.querySelectorAll('.news-item');
+  allPosts = Array.from(newsItems);
+  filteredPosts = [...allPosts];
+  
+  // Nascondi articoli oltre il limite iniziale
+  showPosts();
+  updateLoadMoreButton();
+}
+
+function showPosts() {
+  const startIndex = 0;
+  const endIndex = currentPage * postsPerPage;
+  
+  filteredPosts.forEach((post, index) => {
+    if (index < endIndex) {
+      post.style.display = 'block';
+      setTimeout(() => post.classList.add('visible'), index * 100);
+    } else {
+      post.style.display = 'none';
+      post.classList.remove('visible');
+    }
+  });
+}
+
+function loadMorePosts() {
+  const button = document.getElementById('loadMoreBtn');
+  const spinner = button.querySelector('.btn-spinner');
+  const text = button.querySelector('.btn-text');
+  
+  // Mostra spinner
+  text.style.display = 'none';
+  spinner.style.display = 'inline-block';
+  button.disabled = true;
+  
+  // Simula caricamento
+  setTimeout(() => {
+    currentPage++;
+    showPosts();
+    updateLoadMoreButton();
+    
+    // Nascondi spinner
+    text.style.display = 'inline';
+    spinner.style.display = 'none';
+    button.disabled = false;
+  }, 800);
+}
+
+function updateLoadMoreButton() {
+  const loadMoreSection = document.getElementById('loadMoreSection');
+  const totalVisible = currentPage * postsPerPage;
+  
+  if (totalVisible >= filteredPosts.length) {
+    loadMoreSection.style.display = 'none';
+  } else {
+    loadMoreSection.style.display = 'block';
+  }
+}
+
+function setupFilters() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Aggiorna UI
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Filtra articoli
+      currentFilter = btn.dataset.filter;
+      filterPosts();
+    });
+  });
+}
+
+function filterPosts() {
+  currentPage = 1;
+  
+  if (currentFilter === 'all') {
+    filteredPosts = [...allPosts];
+  } else {
+    filteredPosts = allPosts.filter(post => 
+      post.dataset.category === currentFilter
+    );
+  }
+  
+  showPosts();
+  updateLoadMoreButton();
+}
+
+function setupSearch() {
+  const searchInput = document.getElementById('searchInput');
+  let searchTimeout;
+  
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      searchPosts(e.target.value);
+    }, 300);
+  });
+}
+
+function searchPosts(query) {
+  currentPage = 1;
+  
+  if (!query.trim()) {
+    filterPosts();
+    return;
+  }
+  
+  const searchTerm = query.toLowerCase();
+  filteredPosts = allPosts.filter(post => {
+    const title = post.querySelector('.news-item__title').textContent.toLowerCase();
+    const excerpt = post.querySelector('.news-item__excerpt').textContent.toLowerCase();
+    return title.includes(searchTerm) || excerpt.includes(searchTerm);
+  });
+  
+  showPosts();
+  updateLoadMoreButton();
+}
+
+function setupAnimations() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+function subscribeNewsletter(event) {
+  event.preventDefault();
+  const form = event.target;
+  const email = form.querySelector('input[type="email"]').value;
+  const button = form.querySelector('button');
+  
+  // Simula invio
+  button.textContent = 'Invio...';
+  button.disabled = true;
+  
+  setTimeout(() => {
+    button.textContent = '✓ Iscritto!';
+    button.style.background = '#4C7031';
+    form.querySelector('input').value = '';
+    
+    setTimeout(() => {
+      button.textContent = 'Iscriviti';
+      button.disabled = false;
+      button.style.background = '';
+    }, 2000);
+  }, 1000);
+}
+</script>
+<script defer src="../assets/js/script.js"></script>
+  </main>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-content">
+    <p>© 2025 Associazione Micologica Bresadola - Gruppo di Villa d'Ogna - Tutti i diritti riservati</p>
+    <p>Largo Europa 152 - C.F. 90002890169</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/gruppomicologicovilladogna" aria-label="Seguici su Facebook">
+        <img src="../assets/images/facebook.svg" alt="Facebook" loading="lazy">
+      </a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

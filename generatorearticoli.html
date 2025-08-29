@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generatore Articoli - Gruppo Micologico AMB</title>
+    
+    <!-- Quill CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.min.css" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2d5016 0%, #4a7c59 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 300px;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .editor-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .sidebar {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d5016;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e1e8ed;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: #fafbfc;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4a7c59;
+            background: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(74, 124, 89, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        #editor {
+            height: 400px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #4a7c59 0%, #2d5016 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(74, 124, 89, 0.3);
+        }
+
+        .btn-secondary {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+            margin-right: 15px;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(108, 117, 125, 0.3);
+        }
+
+        .articles-list {
+            max-height: 400px;
+            overflow-y: auto;
+            border-radius: 10px;
+            background: #f8f9fa;
+            padding: 15px;
+        }
+
+        .article-item {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .article-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .article-item.selected {
+            border: 2px solid #4a7c59;
+            background: #f0f7f4;
+        }
+
+        .article-item h4 {
+            color: #2d5016;
+            margin-bottom: 8px;
+            font-size: 1rem;
+        }
+
+        .article-item p {
+            color: #6c757d;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+
+        .preview-section {
+            margin-top: 30px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #4a7c59;
+        }
+
+        .preview-section h3 {
+            color: #2d5016;
+            margin-bottom: 15px;
+        }
+
+        .json-preview {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            overflow-x: auto;
+            white-space: pre;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .status-message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .status-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍄 Generatore Articoli</h1>
+            <p>Gruppo Micologico AMB Villa d'Ogna</p>
+        </div>
+
+        <div class="main-content">
+            <div class="editor-section">
+                <div id="statusMessage" class="hidden"></div>
+                
+                <form id="articleForm">
+                    <div class="form-group">
+                        <label for="title">Titolo Articolo *</label>
+                        <input type="text" id="title" required placeholder="Inserisci il titolo dell'articolo">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="excerpt">Estratto *</label>
+                        <textarea id="excerpt" required placeholder="Breve descrizione dell'articolo"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="category">Categoria</label>
+                        <select id="category">
+                            <option value="eventi">Eventi</option>
+                            <option value="notizie">Notizie</option>
+                            <option value="guide">Guide</option>
+                            <option value="ricerca">Ricerca</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="author">Autore</label>
+                        <input type="text" id="author" value="Gruppo Micologico AMB Villa d'Ogna">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="featuredImage">Immagine in evidenza (nome file)</label>
+                        <input type="text" id="featuredImage" placeholder="es: fungo-porcino.jpg">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Contenuto Articolo *</label>
+                        <div id="editor"></div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button type="button" class="btn btn-secondary" id="loadArticle">Carica Articolo</button>
+                        <button type="submit" class="btn btn-primary">Salva Articolo</button>
+                    </div>
+                </form>
+
+                <div class="preview-section">
+                    <h3>Anteprima JSON</h3>
+                    <div class="json-preview" id="jsonPreview"></div>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <h3 style="margin-bottom: 20px; color: #2d5016;">📄 Articoli Esistenti</h3>
+                <div class="articles-list" id="articlesList"></div>
+                
+                <div style="margin-top: 30px;">
+                    <button type="button" class="btn btn-secondary" style="width: 100%; margin-right: 0;" id="refreshList">
+                        🔄 Aggiorna Lista
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quill JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.min.js"></script>
+    <!-- JSZip per creare file ZIP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    
+    <script>
+        class ArticleGenerator {
+            constructor() {
+                this.articles = [];
+                this.selectedArticle = null;
+                this.nextId = 1;
+                
+                this.initializeQuill();
+                this.initializeEventListeners();
+                this.loadExistingArticles();
+                this.updatePreview();
+            }
+
+            initializeQuill() {
+                this.quill = new Quill('#editor', {
+                    theme: 'snow',
+                    modules: {
+                        toolbar: [
+                            [{ 'header': [1, 2, 3, false] }],
+                            ['bold', 'italic', 'underline', 'strike'],
+                            [{ 'color': [] }, { 'background': [] }],
+                            [{ 'align': [] }],
+                            [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                            ['blockquote', 'code-block'],
+                            ['link', 'image'],
+                            ['clean']
+                        ]
+                    }
+                });
+
+                this.quill.on('text-change', () => {
+                    this.updatePreview();
+                });
+            }
+
+            initializeEventListeners() {
+                // Form submission
+                document.getElementById('articleForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    this.saveArticle();
+                });
+
+                // Form field changes
+                ['title', 'excerpt', 'category', 'author', 'featuredImage'].forEach(fieldId => {
+                    document.getElementById(fieldId).addEventListener('input', () => {
+                        this.updatePreview();
+                    });
+                });
+
+                // Load article button
+                document.getElementById('loadArticle').addEventListener('click', () => {
+                    this.loadSelectedArticle();
+                });
+
+                // Refresh list button
+                document.getElementById('refreshList').addEventListener('click', () => {
+                    this.loadExistingArticles();
+                });
+            }
+
+            generateSlug(title) {
+                return title
+                    .toLowerCase()
+                    .normalize("NFD")
+                    .replace(/[\u0300-\u036f]/g, "")
+                    .replace(/[^a-z0-9\s-]/g, '')
+                    .replace(/\s+/g, '-')
+                    .replace(/-+/g, '-')
+                    .trim('-');
+            }
+
+            getCurrentFormData() {
+                const title = document.getElementById('title').value;
+                const excerpt = document.getElementById('excerpt').value;
+                const category = document.getElementById('category').value;
+                const author = document.getElementById('author').value;
+                const featuredImage = document.getElementById('featuredImage').value;
+                const content = this.quill.root.innerHTML;
+                
+                const slug = this.generateSlug(title);
+                const currentDate = new Date().toISOString().split('T')[0];
+                
+                return {
+                    id: this.selectedArticle ? this.selectedArticle.id : this.getNextId(),
+                    title: title || 'Nuovo Articolo',
+                    slug: slug,
+                    excerpt: excerpt || 'Descrizione non disponibile',
+                    category: category,
+                    date: currentDate,
+                    author: author || 'Gruppo Micologico AMB Villa d\'Ogna',
+                    featured_image: featuredImage ? `/images/${featuredImage}` : `/images/default.jpg`,
+                    htmlContent: `${slug}.html`,
+                    content: content,
+                    status: 'draft',
+                    tags: []
+                };
+            }
+
+            getNextId() {
+                return Math.max(...this.articles.map(a => a.id || 0), 0) + 1;
+            }
+
+            updatePreview() {
+                const articleData = this.getCurrentFormData();
+                const previewData = { ...articleData };
+                delete previewData.content; // Non mostrare il contenuto HTML nel JSON preview
+                
+                document.getElementById('jsonPreview').textContent = JSON.stringify(previewData, null, 2);
+            }
+
+            saveArticle() {
+                const articleData = this.getCurrentFormData();
+                
+                if (!articleData.title.trim()) {
+                    this.showMessage('Il titolo è obbligatorio!', 'error');
+                    return;
+                }
+
+                if (!articleData.excerpt.trim()) {
+                    this.showMessage('L\'estratto è obbligatorio!', 'error');
+                    return;
+                }
+
+                if (!articleData.content.trim() || articleData.content === '<p><br></p>') {
+                    this.showMessage('Il contenuto è obbligatorio!', 'error');
+                    return;
+                }
+
+                // Simula il salvataggio
+                this.simulateSave(articleData);
+            }
+
+            simulateSave(articleData) {
+                // Trova se l'articolo esiste già
+                const existingIndex = this.articles.findIndex(a => a.id === articleData.id);
+                
+                if (existingIndex >= 0) {
+                    this.articles[existingIndex] = { ...articleData };
+                    this.showMessage(`Articolo "${articleData.title}" aggiornato con successo!`, 'success');
+                } else {
+                    this.articles.push({ ...articleData });
+                    this.showMessage(`Articolo "${articleData.title}" creato con successo!`, 'success');
+                }
+
+                this.renderArticlesList();
+                this.generateDownloadData(articleData);
+            }
+
+            generateDownloadData(articleData) {
+                // Genera i file da scaricare
+                const htmlContent = this.generateHTMLContent(articleData);
+                const jsonMetadata = this.generateJSONMetadata(articleData);
+                const articlesIndex = this.generateArticlesIndex();
+
+                // Crea automaticamente uno ZIP con tutti i file
+                this.createAutomaticDownload(articleData, htmlContent, jsonMetadata, articlesIndex);
+            }
+
+            generateHTMLContent(articleData) {
+                return articleData.content;
+            }
+
+            generateJSONMetadata(articleData) {
+                const metadata = { ...articleData };
+                delete metadata.content;
+                return JSON.stringify(metadata, null, 2);
+            }
+
+            generateArticlesIndex() {
+                const indexData = this.articles.map(article => {
+                    const indexArticle = { ...article };
+                    delete indexArticle.content;
+                    return indexArticle;
+                });
+                return JSON.stringify(indexData, null, 2);
+            }
+
+            createAutomaticDownload(articleData, htmlContent, jsonMetadata, articlesIndex) {
+                // Crea uno ZIP con tutti i file e script di installazione
+                const zip = new JSZip();
+                
+                // Aggiungi i file dell'articolo
+                const articleFolder = zip.folder(`data/${articleData.slug}`);
+                articleFolder.file(`${articleData.slug}.html`, htmlContent);
+                articleFolder.file(`${articleData.slug}.json`, jsonMetadata);
+                
+                // Aggiungi l'indice aggiornato
+                zip.file('data/articles.json', articlesIndex);
+                
+                // Crea script di installazione per Windows
+                const windowsScript = this.generateWindowsScript(articleData);
+                zip.file('installa-articolo.bat', windowsScript);
+                
+                // Crea script di installazione per macOS/Linux
+                const unixScript = this.generateUnixScript(articleData);
+                zip.file('installa-articolo.sh', unixScript);
+                
+                // Crea file README con istruzioni
+                const readme = this.generateReadme(articleData);
+                zip.file('README.txt', readme);
+                
+                // Genera e scarica lo ZIP
+                zip.generateAsync({ type: 'blob' }).then((content) => {
+                    this.downloadFile(`articolo-${articleData.slug}.zip`, content, 'application/zip');
+                    this.showAutomatedInstructions(articleData);
+                });
+            }
+
+            generateWindowsScript(articleData) {
+                return `@echo off
+echo ========================================
+echo INSTALLATORE AUTOMATICO ARTICOLO
+echo "${articleData.title}"
+echo ========================================
+echo.
+
+REM Verifica se esiste la cartella data
+if not exist "data" (
+    echo ERRORE: Cartella 'data' non trovata!
+    echo Assicurati di eseguire questo script nella root del tuo sito web.
+    echo.
+    pause
+    exit /b 1
+)
+
+REM Crea la directory dell'articolo se non esiste
+if not exist "data\\${articleData.slug}" (
+    echo Creazione directory: data\\${articleData.slug}
+    mkdir "data\\${articleData.slug}"
+)
+
+REM Copia i file dell'articolo
+echo Copiando ${articleData.slug}.html...
+copy "data\\${articleData.slug}\\${articleData.slug}.html" "data\\${articleData.slug}\\" >nul
+echo Copiando ${articleData.slug}.json...
+copy "data\\${articleData.slug}\\${articleData.slug}.json" "data\\${articleData.slug}\\" >nul
+
+REM Aggiorna l'indice degli articoli
+echo Aggiornando articles.json...
+copy "data\\articles.json" "data\\" >nul
+
+echo.
+echo ✅ INSTALLAZIONE COMPLETATA!
+echo.
+echo L'articolo "${articleData.title}" è stato installato con successo.
+echo Directory creata: data\\${articleData.slug}
+echo.
+${articleData.featured_image !== '/images/default.jpg' ? `echo ⚠️  RICORDA: Aggiungi l'immagine "${articleData.featured_image.replace('/images/', '')}" nella cartella images/
+echo.` : ''}
+echo Premi un tasto per chiudere...
+pause >nul`;
+            }
+
+            generateUnixScript(articleData) {
+                return `#!/bin/bash
+
+echo "========================================"
+echo "INSTALLATORE AUTOMATICO ARTICOLO"
+echo "${articleData.title}"
+echo "========================================"
+echo
+
+# Verifica se esiste la cartella data
+if [ ! -d "data" ]; then
+    echo "❌ ERRORE: Cartella 'data' non trovata!"
+    echo "Assicurati di eseguire questo script nella root del tuo sito web."
+    echo
+    read -p "Premi ENTER per chiudere..."
+    exit 1
+fi
+
+# Crea la directory dell'articolo se non esiste
+if [ ! -d "data/${articleData.slug}" ]; then
+    echo "📁 Creazione directory: data/${articleData.slug}"
+    mkdir -p "data/${articleData.slug}"
+fi
+
+# Copia i file dell'articolo
+echo "📄 Copiando ${articleData.slug}.html..."
+cp "data/${articleData.slug}/${articleData.slug}.html" "data/${articleData.slug}/"
+echo "📄 Copiando ${articleData.slug}.json..."
+cp "data/${articleData.slug}/${articleData.slug}.json" "data/${articleData.slug}/"
+
+# Aggiorna l'indice degli articoli
+echo "📋 Aggiornando articles.json..."
+cp "data/articles.json" "data/"
+
+echo
+echo "✅ INSTALLAZIONE COMPLETATA!"
+echo
+echo "L'articolo '${articleData.title}' è stato installato con successo."
+echo "Directory creata: data/${articleData.slug}"
+echo
+${articleData.featured_image !== '/images/default.jpg' ? `echo "⚠️  RICORDA: Aggiungi l'immagine '${articleData.featured_image.replace('/images/', '')}' nella cartella images/"
+echo` : ''}
+read -p "Premi ENTER per chiudere..."`;
+            }
+
+            generateReadme(articleData) {
+                return `🍄 INSTALLATORE AUTOMATICO ARTICOLI
+Gruppo Micologico AMB Villa d'Ogna
+
+========================================
+ARTICOLO: ${articleData.title}
+DATA: ${articleData.date}
+CATEGORIA: ${articleData.category}
+========================================
+
+📦 CONTENUTO DELLO ZIP:
+- data/${articleData.slug}/${articleData.slug}.html (contenuto articolo)
+- data/${articleData.slug}/${articleData.slug}.json (metadati articolo)
+- data/articles.json (indice aggiornato)
+- installa-articolo.bat (script Windows)
+- installa-articolo.sh (script macOS/Linux)
+- README.txt (questo file)
+
+🚀 INSTALLAZIONE AUTOMATICA:
+
+WINDOWS:
+1. Estrai questo ZIP nella ROOT del tuo sito web
+2. Fai doppio click su "installa-articolo.bat"
+3. Segui le istruzioni sullo schermo
+
+macOS/LINUX:
+1. Estrai questo ZIP nella ROOT del tuo sito web
+2. Apri il Terminale in questa cartella
+3. Digita: chmod +x installa-articolo.sh
+4. Digita: ./installa-articolo.sh
+5. Segui le istruzioni sullo schermo
+
+📋 INSTALLAZIONE MANUALE:
+1. Crea la cartella: data/${articleData.slug}/
+2. Sposta i file .html e .json nella nuova cartella
+3. Sostituisci data/articles.json con quello nuovo
+${articleData.featured_image !== '/images/default.jpg' ? `4. Aggiungi l'immagine "${articleData.featured_image.replace('/images/', '')}" in images/` : ''}
+
+⚠️  IMPORTANTE:
+- Esegui sempre il backup prima dell'installazione
+- Assicurati di essere nella directory root del sito
+- L'articolo apparirà automaticamente sul tuo sito
+
+🆘 SUPPORTO:
+Se hai problemi, contatta il Gruppo Micologico AMB Villa d'Ogna
+
+Generato automaticamente il ${new Date().toLocaleDateString('it-IT')}`;
+            }
+
+            downloadFile(filename, content, mimeType) {
+                const blob = new Blob([content], { type: mimeType });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(url);
+            }
+
+            showAutomatedInstructions(articleData) {
+                // Rimuovi eventuali elementi precedenti
+                const existingModal = document.getElementById('downloadModal');
+                if (existingModal) {
+                    existingModal.remove();
+                }
+
+                // Crea modale con istruzioni automatizzate
+                const modal = document.createElement('div');
+                modal.id = 'downloadModal';
+                modal.style.cssText = `
+                    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+                    background: rgba(0,0,0,0.9); z-index: 1000;
+                    display: flex; align-items: center; justify-content: center;
+                    padding: 20px;
+                `;
+
+                const content = document.createElement('div');
+                content.style.cssText = `
+                    background: white; border-radius: 20px; padding: 40px;
+                    max-width: 650px; text-align: center;
+                    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+                `;
+
+                content.innerHTML = `
+                    <div style="font-size: 4rem; margin-bottom: 20px;">🚀</div>
+                    <h2 style="color: #2d5016; margin-bottom: 20px; font-size: 1.8rem;">
+                        Articolo "${articleData.title}" Pronto!
+                    </h2>
+                    
+                    <div style="background: #e8f5e8; padding: 25px; border-radius: 15px; margin: 20px 0;">
+                        <h3 style="color: #2d5016; margin-bottom: 15px;">
+                            📦 ZIP scaricato con:
+                        </h3>
+                        <div style="font-family: monospace; color: #4a7c59; line-height: 2; text-align: left;">
+                            ✅ File HTML e JSON dell'articolo<br>
+                            ✅ Articles.json aggiornato<br>
+                            ✅ Script di installazione automatica<br>
+                            ✅ Istruzioni complete (README.txt)
+                        </div>
+                    </div>
+
+                    <div style="background: #fff3cd; padding: 25px; border-radius: 15px; margin: 20px 0;">
+                        <h3 style="color: #856404; margin-bottom: 15px;">
+                            🎯 INSTALLAZIONE SUPER FACILE:
+                        </h3>
+                        <div style="color: #856404; line-height: 1.8; font-size: 1.1rem; font-weight: 600;">
+                            <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                                <strong>WINDOWS:</strong><br>
+                                1️⃣ Estrai lo ZIP nella cartella del sito web<br>
+                                2️⃣ Fai doppio click su <code style="background: #f8f9fa; padding: 2px 6px; border-radius: 4px;">installa-articolo.bat</code><br>
+                                3️⃣ FATTO! 🎉
+                            </div>
+                            <div style="background: white; padding: 15px; border-radius: 10px; margin: 10px 0;">
+                                <strong>MAC/LINUX:</strong><br>
+                                1️⃣ Estrai lo ZIP nella cartella del sito web<br>
+                                2️⃣ Apri Terminale e digita:<br>
+                                <code style="background: #f8f9fa; padding: 2px 6px; border-radius: 4px;">chmod +x installa-articolo.sh && ./installa-articolo.sh</code><br>
+                                3️⃣ FATTO! 🎉
+                            </div>
+                        </div>
+                    </div>
+
+                    ${articleData.featured_image !== '/images/default.jpg' ? `
+                    <div style="background: #d1ecf1; padding: 20px; border-radius: 15px; margin: 20px 0;">
+                        <h4 style="color: #0c5460; margin-bottom: 10px;">
+                            🖼️ Non dimenticare l'immagine!
+                        </h4>
+                        <p style="color: #0c5460; margin: 0;">
+                            Aggiungi <strong>${articleData.featured_image.replace('/images/', '')}</strong> 
+                            nella cartella <strong>images/</strong>
+                        </p>
+                    </div>
+                    ` : ''}
+
+                    <div style="background: #f8d7da; padding: 20px; border-radius: 15px; margin: 20px 0;">
+                        <h4 style="color: #721c24; margin-bottom: 10px;">
+                            ⚠️ IMPORTANTE
+                        </h4>
+                        <p style="color: #721c24; margin: 0;">
+                            Lo script crea automaticamente le directory e sposta tutti i file.<br>
+                            <strong>Fai sempre un backup prima dell'installazione!</strong>
+                        </p>
+                    </div>
+
+                    <button onclick="this.closest('#downloadModal').remove()" 
+                            style="
+                                background: linear-gradient(135deg, #4a7c59 0%, #2d5016 100%);
+                                color: white; border: none; padding: 15px 40px;
+                                border-radius: 10px; font-size: 16px; font-weight: 600;
+                                cursor: pointer; margin-top: 20px;
+                                transition: transform 0.3s ease;
+                            "
+                            onmouseover="this.style.transform='translateY(-2px)'"
+                            onmouseout="this.style.transform='translateY(0)'">
+                        Perfetto! Vado a Installare 🚀
+                    </button>
+                `;
+
+                modal.appendChild(content);
+                document.body.appendChild(modal);
+
+                // Chiudi automaticamente dopo 45 secondi
+                setTimeout(() => {
+                    if (document.getElementById('downloadModal')) {
+                        modal.remove();
+                    }
+                }, 45000);
+            }
+
+            loadSelectedArticle() {
+                if (!this.selectedArticle) {
+                    this.showMessage('Seleziona un articolo dalla lista!', 'error');
+                    return;
+                }
+
+                // Carica i dati nel form
+                document.getElementById('title').value = this.selectedArticle.title || '';
+                document.getElementById('excerpt').value = this.selectedArticle.excerpt || '';
+                document.getElementById('category').value = this.selectedArticle.category || 'eventi';
+                document.getElementById('author').value = this.selectedArticle.author || '';
+                document.getElementById('featuredImage').value = 
+                    this.selectedArticle.featured_image ? this.selectedArticle.featured_image.replace('/images/', '') : '';
+
+                // Carica il contenuto nell'editor
+                if (this.selectedArticle.content) {
+                    this.quill.root.innerHTML = this.selectedArticle.content;
+                } else {
+                    this.quill.root.innerHTML = '<p>Contenuto non disponibile</p>';
+                }
+
+                this.updatePreview();
+                this.showMessage(`Articolo "${this.selectedArticle.title}" caricato!`, 'success');
+            }
+
+            loadExistingArticles() {
+                // Simula il caricamento degli articoli esistenti
+                // In un'implementazione reale, questi dati verrebbero da un API o file system
+                this.articles = [
+                    {
+                        id: 1,
+                        title: "49ª Mostra del Fungo e della Natura 2025",
+                        slug: "49-mostra-del-fungo-e-della-natura-2025",
+                        excerpt: "Dal 9 al 17 Agosto 2025 torna la tradizionale Mostra del Fungo e della Natura di Villa d'Ogna.",
+                        category: "eventi",
+                        date: "2025-07-30",
+                        author: "Gruppo Micologico AMB Villa d'Ogna",
+                        featured_image: "/images/mostradelfungo.jpeg",
+                        htmlContent: "mostraDelFungo.html",
+                        content: "<p>Dal 9 al 17 Agosto 2025 torna la tradizionale Mostra del Fungo e della Natura di Villa d'Ogna. Un evento imperdibile che celebra la biodiversità del nostro territorio con esposizioni, laboratori e degustazioni.</p>",
+                        status: "published"
+                    },
+                    {
+                        id: 2,
+                        title: "Avvio Ispettorato Micologico - 2025",
+                        slug: "avvio-ispettorato-micologico-2025",
+                        excerpt: "Come, dove e quando fare controllare i funghi raccolti.",
+                        category: "eventi",
+                        date: "2025-08-08",
+                        author: "Gruppo Micologico AMB Villa d'Ogna",
+                        featured_image: "/images/avvioIspettorato2025.jpg",
+                        htmlContent: "avvioIspettorato2025.html",
+                        content: "<p>Con l'inizio della stagione dei funghi, l'Agenzia di Tutela della Salute di Bergamo attiva i punti dell'Ispettorato Micologico sul territorio provinciale.</p><p>Tutti i dettagli sul sito dell'ATS.</p>",
+                        status: "published"
+                    }
+                ];
+
+                this.renderArticlesList();
+                this.nextId = Math.max(...this.articles.map(a => a.id || 0), 0) + 1;
+            }
+
+            renderArticlesList() {
+                const container = document.getElementById('articlesList');
+                
+                if (this.articles.length === 0) {
+                    container.innerHTML = '<p style="text-align: center; color: #6c757d; padding: 20px;">Nessun articolo trovato</p>';
+                    return;
+                }
+
+                container.innerHTML = this.articles.map(article => `
+                    <div class="article-item ${this.selectedArticle?.id === article.id ? 'selected' : ''}" 
+                         onclick="articleGenerator.selectArticle(${article.id})">
+                        <h4>${article.title}</h4>
+                        <p><strong>Categoria:</strong> ${article.category}</p>
+                        <p><strong>Data:</strong> ${article.date}</p>
+                        <p><strong>Stato:</strong> ${article.status || 'draft'}</p>
+                        <p style="font-style: italic;">${article.excerpt}</p>
+                    </div>
+                `).join('');
+            }
+
+            selectArticle(articleId) {
+                this.selectedArticle = this.articles.find(a => a.id === articleId);
+                this.renderArticlesList();
+            }
+
+            showMessage(message, type) {
+                const messageDiv = document.getElementById('statusMessage');
+                messageDiv.textContent = message;
+                messageDiv.className = `status-message status-${type}`;
+                messageDiv.classList.remove('hidden');
+
+                setTimeout(() => {
+                    messageDiv.classList.add('hidden');
+                }, 5000);
+            }
+
+            clearForm() {
+                document.getElementById('articleForm').reset();
+                this.quill.root.innerHTML = '';
+                this.selectedArticle = null;
+                this.renderArticlesList();
+                this.updatePreview();
+            }
+        }
+
+        // Inizializza l'applicazione
+        let articleGenerator;
+        document.addEventListener('DOMContentLoaded', () => {
+            articleGenerator = new ArticleGenerator();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+title: "Gruppo Micologico AMB Villa d'Ogna"
+email: "pierino.bigoni@gmail.com"
+description: "Il Gruppo Micologico AMB Villa d'Ogna - scoperta e studio dei funghi in Val Seriana"
+baseurl: "" # se non usi sottocartella, lascia vuoto
+url: "https://www.ambvilladogna.it"
+theme: null   # stiamo usando il tuo CSS personalizzato
+plugins:
+  - jekyll-sitemap
+
+# Escludi cose inutili dalla build
+exclude:
+  - node_modules
+  - vendor

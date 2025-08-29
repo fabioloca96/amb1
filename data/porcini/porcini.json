@@ -1,0 +1,13 @@
+{
+  "id": 3,
+  "title": "Porcini",
+  "slug": "porcini",
+  "excerpt": "Ciao ciao",
+  "category": "eventi",
+  "date": "2025-08-14",
+  "author": "Gruppo Micologico AMB Villa d'Ogna",
+  "featured_image": "/images/default.jpg",
+  "htmlContent": "porcini.html",
+  "status": "draft",
+  "tags": []
+}

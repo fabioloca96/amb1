@@ -1,0 +1,283 @@
+---
+layout: default
+title: News
+---
+<link rel="stylesheet" href="../stylesheets/news.css"> 
+<section class="news-hero">
+  <div class="news-hero__content">
+    <h1 class="news-hero__title">Le Nostre Storie</h1>
+    <p class="news-hero__subtitle">Scopri le ultime novità dal mondo dei funghi e della micologia</p>
+  </div>
+</section>
+
+<section class="news-main">
+  <div class="container">
+    <!-- Filtri e Ricerca -->
+    <div class="news-controls">
+      <div class="search-box">
+        <input type="text" placeholder="Cerca negli articoli..." id="searchInput">
+        <button class="search-btn">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+          </svg>
+        </button>
+      </div>
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">Tutti</button>
+        <button class="filter-btn" data-filter="eventi">Eventi</button>
+        <button class="filter-btn" data-filter="ricerca">Ricerca</button>
+        <button class="filter-btn" data-filter="educazione">Educazione</button>
+      </div>
+    </div>
+
+    <!-- Griglia degli Articoli -->
+    <div class="news-masonry" id="newsGrid">
+      {% for post in site.posts %}
+        <article class="news-item fade-in" data-category="{{ post.category | default: 'generale' }}">
+          <div class="news-item__image">
+            {% if post.image %}
+              <img src="{{ post.image }}" alt="{{ post.title }}" loading="lazy">
+            {% else %}
+              <div class="placeholder-image">
+                <svg viewBox="0 0 24 24" width="48" height="48">
+                  <path fill="currentColor" d="M21,19V5c0,-1.1 -0.9,-2 -2,-2H5c-1.1,0 -2,0.9 -2,2v14c0,1.1 0.9,2 2,2h14c1.1,0 2,-0.9 2,-2zM8.5,13.5l2.5,3.01L14.5,12l4.5,6H5l3.5,-4.5z"/>
+                </svg>
+              </div>
+            {% endif %}
+            <div class="news-item__overlay">
+              <span class="news-item__date">{{ post.date | date: "%d %b %Y" }}</span>
+              {% if post.category %}
+                <span class="news-item__category">{{ post.category | capitalize }}</span>
+              {% endif %}
+            </div>
+          </div>
+          
+          <div class="news-item__content">
+            <h3 class="news-item__title">
+              <a href="{{ post.url }}">{{ post.title }}</a>
+            </h3>
+            <p class="news-item__excerpt">{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+            
+            <div class="news-item__footer">
+              <a href="{{ post.url }}" class="read-more">
+                Leggi tutto
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                  <path fill="currentColor" d="M8.59,16.58L13.17,12L8.59,7.41L10,6L16,12L10,18L8.59,16.58Z"/>
+                </svg>
+              </a>
+              {% if post.reading_time %}
+                <span class="reading-time">{{ post.reading_time }} min</span>
+              {% endif %}
+            </div>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+
+    <!-- Pulsante Carica Altri (funzionante) -->
+    <div class="load-more-section" id="loadMoreSection">
+      <button class="load-more-btn" id="loadMoreBtn" onclick="loadMorePosts()">
+        <span class="btn-text">Carica altri articoli</span>
+        <div class="btn-spinner" style="display: none;">
+          <svg viewBox="0 0 24 24" width="20" height="20">
+            <path fill="currentColor" d="M12,4V2A10,10 0 0,0 2,12H4A8,8 0 0,1 12,4Z"/>
+          </svg>
+        </div>
+      </button>
+    </div>
+
+    <!-- Sezione Newsletter -->
+    <div class="newsletter-section">
+      <div class="newsletter-card">
+        <div class="newsletter-icon">📧</div>
+        <h3>Resta aggiornato</h3>
+        <p>Iscriviti alla nostra newsletter per ricevere le ultime novità dal mondo della micologia</p>
+        <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+          <input type="email" placeholder="La tua email" required>
+          <button type="submit">Iscriviti</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// Stato della paginazione
+let currentPage = 1;
+const postsPerPage = 6;
+let allPosts = [];
+let filteredPosts = [];
+let currentFilter = 'all';
+
+// Inizializzazione
+document.addEventListener('DOMContentLoaded', function() {
+  initializeNews();
+  setupAnimations();
+  setupFilters();
+  setupSearch();
+});
+
+function initializeNews() {
+  const newsItems = document.querySelectorAll('.news-item');
+  allPosts = Array.from(newsItems);
+  filteredPosts = [...allPosts];
+  
+  // Nascondi articoli oltre il limite iniziale
+  showPosts();
+  updateLoadMoreButton();
+}
+
+function showPosts() {
+  const startIndex = 0;
+  const endIndex = currentPage * postsPerPage;
+  
+  filteredPosts.forEach((post, index) => {
+    if (index < endIndex) {
+      post.style.display = 'block';
+      setTimeout(() => post.classList.add('visible'), index * 100);
+    } else {
+      post.style.display = 'none';
+      post.classList.remove('visible');
+    }
+  });
+}
+
+function loadMorePosts() {
+  const button = document.getElementById('loadMoreBtn');
+  const spinner = button.querySelector('.btn-spinner');
+  const text = button.querySelector('.btn-text');
+  
+  // Mostra spinner
+  text.style.display = 'none';
+  spinner.style.display = 'inline-block';
+  button.disabled = true;
+  
+  // Simula caricamento
+  setTimeout(() => {
+    currentPage++;
+    showPosts();
+    updateLoadMoreButton();
+    
+    // Nascondi spinner
+    text.style.display = 'inline';
+    spinner.style.display = 'none';
+    button.disabled = false;
+  }, 800);
+}
+
+function updateLoadMoreButton() {
+  const loadMoreSection = document.getElementById('loadMoreSection');
+  const totalVisible = currentPage * postsPerPage;
+  
+  if (totalVisible >= filteredPosts.length) {
+    loadMoreSection.style.display = 'none';
+  } else {
+    loadMoreSection.style.display = 'block';
+  }
+}
+
+function setupFilters() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      // Aggiorna UI
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      
+      // Filtra articoli
+      currentFilter = btn.dataset.filter;
+      filterPosts();
+    });
+  });
+}
+
+function filterPosts() {
+  currentPage = 1;
+  
+  if (currentFilter === 'all') {
+    filteredPosts = [...allPosts];
+  } else {
+    filteredPosts = allPosts.filter(post => 
+      post.dataset.category === currentFilter
+    );
+  }
+  
+  showPosts();
+  updateLoadMoreButton();
+}
+
+function setupSearch() {
+  const searchInput = document.getElementById('searchInput');
+  let searchTimeout;
+  
+  searchInput.addEventListener('input', (e) => {
+    clearTimeout(searchTimeout);
+    searchTimeout = setTimeout(() => {
+      searchPosts(e.target.value);
+    }, 300);
+  });
+}
+
+function searchPosts(query) {
+  currentPage = 1;
+  
+  if (!query.trim()) {
+    filterPosts();
+    return;
+  }
+  
+  const searchTerm = query.toLowerCase();
+  filteredPosts = allPosts.filter(post => {
+    const title = post.querySelector('.news-item__title').textContent.toLowerCase();
+    const excerpt = post.querySelector('.news-item__excerpt').textContent.toLowerCase();
+    return title.includes(searchTerm) || excerpt.includes(searchTerm);
+  });
+  
+  showPosts();
+  updateLoadMoreButton();
+}
+
+function setupAnimations() {
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, observerOptions);
+
+  document.querySelectorAll('.fade-in').forEach(el => {
+    observer.observe(el);
+  });
+}
+
+function subscribeNewsletter(event) {
+  event.preventDefault();
+  const form = event.target;
+  const email = form.querySelector('input[type="email"]').value;
+  const button = form.querySelector('button');
+  
+  // Simula invio
+  button.textContent = 'Invio...';
+  button.disabled = true;
+  
+  setTimeout(() => {
+    button.textContent = '✓ Iscritto!';
+    button.style.background = '#4C7031';
+    form.querySelector('input').value = '';
+    
+    setTimeout(() => {
+      button.textContent = 'Iscriviti';
+      button.disabled = false;
+      button.style.background = '';
+    }, 2000);
+  }, 1000);
+}
+</script>
+<script defer src="../assets/js/script.js"></script>
