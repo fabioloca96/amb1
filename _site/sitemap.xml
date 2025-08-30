@@ -1,39 +1,94 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://ambvilladogna.it/</loc>
-    <lastmod>2025-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://ambvilladogna.it/chi_siamo.html</loc>
-    <lastmod>2025-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://ambvilladogna.it/eventi.html</loc>
-    <lastmod>2025-04-13</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://ambvilladogna.it/leggi.html</loc>
-    <lastmod>2025-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://ambvilladogna.it/contatti.html</loc>
-    <lastmod>2025-04-13</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://ambvilladogna.it/news.html</loc>
-    <lastmod>2025-07-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://www.ambvilladogna.it/2025/08/08/atsispettoratomicologico.html</loc>
+<lastmod>2025-08-08T00:00:00+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/2025/08/28/Giornatadellamicologia.html</loc>
+<lastmod>2025-08-28T00:00:00+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/2025/08/29/gitabelloro.html</loc>
+<lastmod>2025-08-29T00:00:00+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/html/news.html</loc>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/assets/images/copertine/italieParIciAug2025.html</loc>
+<lastmod>2025-08-14T17:28:53+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/assets/images/copertine/mostraDelFungo.html</loc>
+<lastmod>2025-08-14T17:28:53+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/data/COMUNICAZIONE_N.688_-_Convocazione_SCRUTINI_DIFFERITI_Docenti_a.s._2024-2025.pdf</loc>
+<lastmod>2025-08-28T08:04:33+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/data/COMUNICAZIONE_N.703_-_Calendario_Esami_di_Idoneit_e_Integrativi_sessione_settembre_2025_TECNICO_-_AGGIORNAMENTO.pdf</loc>
+<lastmod>2025-08-28T08:03:03+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/data/COMUNICAZIONE_N.705_Calendario_COLLOQUI_INTEGRATIVI_E_ESAMI_DI_IDONEIT_A.S._2025-2026%20(1).pdf</loc>
+<lastmod>2025-08-28T08:02:38+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/data/COMUNICAZIONE_N.705_Calendario_COLLOQUI_INTEGRATIVI_E_ESAMI_DI_IDONEIT_A.S._2025-2026.pdf</loc>
+<lastmod>2025-08-28T07:58:17+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/data/avvioispettorato2025/avvioIspettorato2025.html</loc>
+<lastmod>2025-08-14T17:31:44+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/data/italieParIciAug2025/italieParIciAug2025.html</loc>
+<lastmod>2025-08-14T17:31:53+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/data/mostraDelFungo/mostraDelFungo.html</loc>
+<lastmod>2025-08-14T17:31:56+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/data/porcini/porcini.html</loc>
+<lastmod>2025-08-14T16:32:16+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/generatorearticoli.html</loc>
+<lastmod>2025-08-14T18:31:49+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/html/chi_siamo.html</loc>
+<lastmod>2025-08-30T08:19:34+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/html/contatti.html</loc>
+<lastmod>2025-08-30T08:19:39+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/html/eventi.html</loc>
+<lastmod>2025-08-30T08:19:47+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/html/leggi.html</loc>
+<lastmod>2025-08-30T08:19:52+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/html/privacy.html</loc>
+<lastmod>2025-08-30T08:20:10+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/html/riviste.html</loc>
+<lastmod>2025-08-30T08:20:20+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/</loc>
+<lastmod>2025-08-29T19:19:07+02:00</lastmod>
+</url>
+<url>
+<loc>https://www.ambvilladogna.it/riviste/rivista-2025.pdf</loc>
+<lastmod>2025-08-14T17:28:53+02:00</lastmod>
+</url>
 </urlset>
