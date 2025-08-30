@@ -1,13 +1,41 @@
-title: "Gruppo Micologico AMB Villa d'Ogna"
+title: "Associazione Micologica AMB Villa d'Ogna"
 email: "pierino.bigoni@gmail.com"
 description: "Il Gruppo Micologico AMB Villa d'Ogna - scoperta e studio dei funghi in Val Seriana"
 baseurl: "" # se non usi sottocartella, lascia vuoto
 url: "https://www.ambvilladogna.it"
 theme: null   # stiamo usando il tuo CSS personalizzato
+
+# Informazioni autore/organizzazione
+author:
+  name: "Associazione Micologica Bresadola Villa d'Ogna"
+  email: "pierino.bigoni@gmail.com"
+  # Sostituisci con la tua email
+
+# Social media (opzionali ma utili per SEO)
+social:
+  name: "Gruppo Micologico AMB Villa d'Ogna"
+  links:
+    - "https://facebook.com/ambvilladogna"  # Sostituisci con i tuoi link
 plugins:
   - jekyll-sitemap
+  - jekyll-seo-tag
 
 # Escludi cose inutili dalla build
 exclude:
   - node_modules
   - vendor
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+
+seo:
+  type: "Organization"
+  name: "Gruppo Micologico AMB Villa d'Ogna"
+  links: ["https://tuousername.github.io"]
+
+image: "/assets/images/logo.jpg"  # Crea questa immagine 1200x630px
+
+# Impostazioni aggiuntive Jekyll
+timezone: "Europe/Rome"
+lang: "it_IT"
+
