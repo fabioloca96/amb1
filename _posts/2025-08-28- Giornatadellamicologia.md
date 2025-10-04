@@ -8,7 +8,7 @@ image: /assets/images/giornatadellamicologia.jpg
 
 ## Un evento imperdibile per gli appassionati di micologia
 
-Domenica **12 ottobre 2025**, dalle ore **9:00 alle 18:00**, Villa d’Ogna sarà il cuore pulsante della micologia nazionale con la **24ª Giornata Nazionale della Micologia**.  
+Domenica **12 ottobre 2025**, dalle ore **9:00 alle 18:00**, Villa d’Ogna ospiterà la **24ª Giornata Nazionale della Micologia**.  
 L’iniziativa è promossa dall' **Associazione Micologica Bresadola – Villa d’Ogna** in collaborazione con l’associazione **Fior di Roccia** e si svolgerà presso la **Piazza del Volontariato di Villa d'Ogna**.
 
 ---
@@ -16,7 +16,7 @@ L’iniziativa è promossa dall' **Associazione Micologica Bresadola – Villa d
 <figure>
   <img src="/assets/images/craterelluscornucopioides.jpg" alt="Craterellus cornucopioides: ricercato fungo autunnale">
   <figcaption>
-    Questo fungo è chiamato "Trombette dei morti" ed è un ricercato fungo commestibile autunnale tipico delle nostre faggete.
+    "Trombette dei morti": un ricercato fungo commestibile autunnale tipico delle nostre faggete.
   </figcaption>
 </figure>
 
@@ -28,7 +28,7 @@ La Giornata Nazionale della Micologia è un’occasione unica per:
 - osservare **dal vivo** numerose specie fungine autunnali raccolte nella Val Seriana;  
 - incontrare **esperti micologi** pronti a rispondere a domande, dubbi e curiosità.  
 
-Come da tradizione, l’associazione **Fior di Roccia** proporrà una **castagnata** e darà la possibilità, a chi lo desidera, di provare **arrampicata sportiva** in un contesto sicuro e guidato.
+La nostra esposizione sarà parte di un
 
 ---
 
