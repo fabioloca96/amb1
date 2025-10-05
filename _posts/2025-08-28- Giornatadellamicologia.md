@@ -9,7 +9,8 @@ image: /assets/images/giornatadellamicologia.jpg
 ## Un evento imperdibile per gli appassionati di micologia
 
 Domenica **12 ottobre 2025**, dalle ore **9:00 alle 18:00**, Villa d’Ogna ospiterà la **24ª Giornata Nazionale della Micologia**.  
-L’iniziativa è promossa dall' **Associazione Micologica Bresadola – Villa d’Ogna** in collaborazione con l’associazione **Fior di Roccia** e si svolgerà presso la **Piazza del Volontariato di Villa d'Ogna**.
+L’iniziativa è promossa dall' **Associazione Micologica Bresadola – Villa d’Ogna** in collaborazione con l’associazione **Fior di Roccia** e si svolgerà presso la **Piazza del Volontariato di Villa d'Ogna**. Assieme a noi ci sarà anche l'associazione Fior di Roccia che, anche nella giornata di Sabato permetterà a chiunque di provare ad arrampicare in sicurezza. Inoltre, Domenica pomeriggio, alle ore 15:00 la piazza sarà animata dalla Banda Cittadina Carlo Cremonesi di Villa d'Ogna e dalla ormai tradizionale castagnata. 
+Per maggiori informazioni, scarica la **[locandina dell'evento](/assets/images/locandinamontagneinvilla.jpeg)**.
 
 ---
 
@@ -28,7 +29,7 @@ La Giornata Nazionale della Micologia è un’occasione unica per:
 - osservare **dal vivo** numerose specie fungine autunnali raccolte nella Val Seriana;  
 - incontrare **esperti micologi** pronti a rispondere a domande, dubbi e curiosità.  
 
-La nostra esposizione sarà parte di un
+Vi aspettiamo numerosi
 
 ---
 
