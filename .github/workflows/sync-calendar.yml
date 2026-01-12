@@ -22,7 +22,7 @@ jobs:
       - name: Download latest ICS file 
         env:
           CALENDAR_URL: "https://calendar.google.com/calendar/u/0?cid=N2MwZDU0YzhmYTQ5OWIxYjk5MTQ5OTgxNDg2MGYyMDk0ZWVlNTNiYWJjZWU1MGY4ZTc1ZWY0NWI0YjY0YzIyM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" 
-          ICS_FILENAME: "./calendar/basics.ics" # Assicurati che il nome corrisponda 
+          ICS_FILENAME: "calendar/basics.ics" # Assicurati che il nome corrisponda 
 
         run: |
           echo "Scarico il file ICS da Google Calendar..." 
