@@ -22,14 +22,14 @@ jobs:
           CALENDAR_URL: "https://calendar.google.com/calendar/u/0?cid=N2MwZDU0YzhmYTQ5OWIxYjk5MTQ5OTgxNDg2MGYyMDk0ZWVlNTNiYWJjZWU1MGY4ZTc1ZWY0NWI0YjY0YzIyM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" 
         run: |
           echo "Scarico il file ICS da Google Calendar..." 
-          curl -sS -L "$CALENDAR_URL" -o "calendar/basics.ics" 
+          curl -sS -L "$CALENDAR_URL" -o "basics.ics" 
           echo "Download completato." 
       
       - name: Commit and Push if changed 
         run: |
           if [ -n "$(git status --porcelain)" ]; then 
             echo "Modifiche rilevate. Commit in corso..." 
-            git add calendar/basics.ics
+            git add basics.ics
             git commit -m "🤖 Sync: Aggiornamento calendario club micologico - $(date +%F_%H:%M)" 
             git push 
             echo "Aggiornamento completato con successo." 
