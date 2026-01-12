@@ -1,10 +1,8 @@
 name: Sincronizzazione Giornaliera Calendario ICS 
-
 on:
   schedule:
     - cron: '0 0 * * *' # Esegue ogni giorno a mezzanotte UTC 
   workflow_dispatch: # Permette l'avvio manuale 
-
 jobs:
   sync_ics:
     runs-on: ubuntu-latest 
@@ -13,28 +11,26 @@ jobs:
         uses: actions/checkout@v4 
         with:
           token: ${{ secrets.GH_PAT }} # NON SOSTITUIRE. Usa automaticamente il Token per consentire il push 
-
+      
       - name: Configure Git User 
         run: |
           git config user.name "GitHub Actions Bot" 
           git config user.email "actions@github.com" 
-
+      
       - name: Download latest ICS file 
         env:
           CALENDAR_URL: "https://calendar.google.com/calendar/u/0?cid=N2MwZDU0YzhmYTQ5OWIxYjk5MTQ5OTgxNDg2MGYyMDk0ZWVlNTNiYWJjZWU1MGY4ZTc1ZWY0NWI0YjY0YzIyM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" 
-          ICS_FILENAME: "calendar/basics.ics" # Assicurati che il nome corrisponda 
-
         run: |
           echo "Scarico il file ICS da Google Calendar..." 
-          curl -sS -L "$CALENDAR_URL" -o "$ICS_FILENAME" 
+          curl -sS -L "$CALENDAR_URL" -o "calendar/basics.ics" 
           echo "Download completato." 
-
+      
       - name: Commit and Push if changed 
         run: |
           if [ -n "$(git status --porcelain)" ]; then 
             echo "Modifiche rilevate. Commit in corso..." 
-            git add "$ICS_FILENAME" 
-            git commit -m "🤖 Sync: Aggiornamento calendario club micologico - $(date +%F %H:%M)" 
+            git add calendar/basics.ics
+            git commit -m "🤖 Sync: Aggiornamento calendario club micologico - $(date +%F_%H:%M)" 
             git push 
             echo "Aggiornamento completato con successo." 
           else
