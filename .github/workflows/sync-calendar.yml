@@ -19,17 +19,17 @@ jobs:
       
       - name: Download latest ICS file 
         env:
-          CALENDAR_URL: "https://calendar.google.com/calendar/u/0?cid=N2MwZDU0YzhmYTQ5OWIxYjk5MTQ5OTgxNDg2MGYyMDk0ZWVlNTNiYWJjZWU1MGY4ZTc1ZWY0NWI0YjY0YzIyM0Bncm91cC5jYWxlbmRhci5nb29nbGUuY29t" 
+          CALENDAR_URL: "https://calendar.google.com/calendar/ical/7c0d54c8fa499b1b991499814860f2094eee53babcee50f8e75ef45b4b64c223%40group.calendar.google.com/public/basic.ics" 
         run: |
           echo "Scarico il file ICS da Google Calendar..." 
-          curl -sS -L "$CALENDAR_URL" -o "basics.ics" 
+          curl -sS -L "$CALENDAR_URL" -o "calendar/basics.ics" 
           echo "Download completato." 
       
       - name: Commit and Push if changed 
         run: |
           if [ -n "$(git status --porcelain)" ]; then 
             echo "Modifiche rilevate. Commit in corso..." 
-            git add basics.ics
+            git add calendar/basics.ics
             git commit -m "🤖 Sync: Aggiornamento calendario club micologico - $(date +%F_%H:%M)" 
             git push 
             echo "Aggiornamento completato con successo." 
