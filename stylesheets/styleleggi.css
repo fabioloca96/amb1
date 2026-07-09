@@ -216,6 +216,15 @@
     color: #92400e;
 }
 
+.link-cliccabile {
+    color: #16a34a;
+    text-decoration: underline;
+}
+
+.link-cliccabile:hover {
+    color: #0d7a34;
+}
+
 /* === Sezioni esistenti === */
 .contributi {
     padding: 2rem 1rem;
