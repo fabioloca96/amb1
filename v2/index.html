@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gruppo Micologico AMB Villa d'Ogna — Anteprima 2.0</title>
+  <meta name="description" content="Il Gruppo Micologico AMB Villa d'Ogna promuove la conoscenza dei funghi, organizza eventi, uscite didattiche e offre supporto per l'identificazione delle specie fungine locali.">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="../assets/images/fungo_icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <div class="announce" id="announce">
+    <p>🍄 <strong>50ª Mostra del Fungo e della Natura</strong> — dall'8 al 16 agosto 2026 a Villa d'Ogna</p>
+    <button class="announce__close" id="announceClose" aria-label="Chiudi avviso">×</button>
+  </div>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="index.html" class="brand">
+        <img src="../assets/images/logo1.png" alt="Logo Associazione Micologica Bresadola - Villa d'Ogna" class="brand__logo">
+        <span class="brand__text">AMB <em>Villa d'Ogna</em></span>
+      </a>
+
+      <nav class="navbar" id="navbar" aria-label="Navigazione principale">
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="../html/chi_siamo.html">Chi siamo</a></li>
+          <li><a href="../html/news.html">News</a></li>
+          <li><a href="../html/eventi.html">Eventi</a></li>
+          <li><a href="../html/leggi.html">Regolamenti</a></li>
+          <li><a href="../html/riviste.html">Riviste</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="../html/contatti.html" class="btn btn--ghost header-cta">Contattaci</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Apri menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <img src="../assets/images/herogruppo.webp" alt="Il gruppo micologico durante un'escursione" class="hero__bg" loading="eager">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="eyebrow reveal">Associazione Micologica Bresadola · Villa d'Ogna</p>
+        <h1 class="reveal">La foresta ha molto<br> da raccontare.</h1>
+        <p class="hero__lead reveal">Studiamo, tuteliamo e condividiamo la biodiversità fungina della Val Seriana da oltre 50 anni — tra ricerca, escursioni e divulgazione per tutte le età.</p>
+        <div class="hero__actions reveal">
+          <a href="../html/chi_siamo.html" class="btn btn--primary">Scopri il nostro gruppo</a>
+          <a href="../html/eventi.html" class="btn btn--outline-light">Prossimi eventi</a>
+        </div>
+      </div>
+      <a href="#stats" class="scroll-cue" aria-label="Scorri per saperne di più">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- STATS -->
+    <section class="stats" id="stats">
+      <div class="stats__grid">
+        <div class="stat reveal">
+          <span class="stat__num" data-count="50">0</span><span class="stat__suffix">+</span>
+          <p>anni di attività</p>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num" data-count="7">0</span>
+          <p>comuni della Valle Seriana coinvolti</p>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num" data-count="12">0</span>
+          <p>eventi e uscite ogni anno</p>
+        </div>
+        <div class="stat reveal">
+          <span class="stat__num" data-count="800">0</span><span class="stat__suffix">+</span>
+          <p>specie fungine censite</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CHI SIAMO -->
+    <section class="about" id="chi-siamo">
+      <div class="about__media reveal">
+        <img src="../assets/images/craterelluscornucopioides.jpg" alt="Craterellus cornucopioides raccolto durante un'uscita didattica" loading="lazy">
+      </div>
+      <div class="about__content reveal">
+        <p class="eyebrow">Chi siamo</p>
+        <h2>Passione, rigore scientifico e voglia di condividere</h2>
+        <p>Il Gruppo Micologico AMB Villa d'Ogna riunisce appassionati, esperti e famiglie attorno a un obiettivo comune: conoscere il mondo dei funghi per proteggerlo. Organizziamo escursioni, mostre, corsi nelle scuole e momenti di identificazione guidata, sempre con il supporto di micologi qualificati.</p>
+        <ul class="check-list">
+          <li>Uscite didattiche sul territorio della Val Seriana</li>
+          <li>Progetti di educazione ambientale nelle scuole</li>
+          <li>Supporto per il riconoscimento delle specie locali</li>
+        </ul>
+        <a href="../html/chi_siamo.html" class="link-arrow">Scopri la nostra storia →</a>
+      </div>
+    </section>
+
+    <!-- ATTIVITÀ -->
+    <section class="activities" id="attivita">
+      <div class="section-head reveal">
+        <p class="eyebrow">Cosa facciamo</p>
+        <h2>Un'associazione, quattro modi di vivere il bosco</h2>
+      </div>
+      <div class="activities__grid">
+        <article class="card reveal">
+          <div class="card__icon">🔬</div>
+          <h3>Ricerca e studio</h3>
+          <p>Censimento e documentazione delle specie fungine locali, in collaborazione con enti scientifici e micologi esperti.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">🥾</div>
+          <h3>Escursioni guidate</h3>
+          <p>Uscite sul territorio per imparare a riconoscere habitat e specie, in sicurezza e in compagnia.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">🎓</div>
+          <h3>Educazione</h3>
+          <p>Progetti nelle scuole e incontri pubblici per avvicinare grandi e piccoli alla micologia.</p>
+        </article>
+        <article class="card reveal">
+          <div class="card__icon">🌱</div>
+          <h3>Tutela ambientale</h3>
+          <p>Promozione di una raccolta consapevole e rispettosa, nel rispetto delle normative vigenti.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- NEWS -->
+    <section class="news" id="news">
+      <div class="section-head reveal">
+        <p class="eyebrow">Ultime notizie</p>
+        <h2>Cosa succede nel gruppo</h2>
+      </div>
+      <div class="news__grid">
+        <a class="news-card reveal" href="../2026/07/09/50-mostra-fungo-natura.html">
+          <div class="news-card__media">
+            <img src="../assets/images/mostradelfungo50.jpg" alt="50ª Mostra del Fungo e della Natura" loading="lazy">
+          </div>
+          <div class="news-card__body">
+            <time>9 luglio 2026</time>
+            <h3>50ª Mostra del Fungo e della Natura a Villa d'Ogna</h3>
+            <p>Dall'8 al 16 agosto torna l'appuntamento estivo, tra artigianato, tradizioni e devozioni popolari.</p>
+          </div>
+        </a>
+        <a class="news-card reveal" href="../2026/08/04/gitabelloro2026.html">
+          <div class="news-card__media">
+            <img src="../assets/images/escursionebelloro2026.jpg" alt="Escursione sul Monte Belloro" loading="lazy">
+          </div>
+          <div class="news-card__body">
+            <time>13 settembre 2026</time>
+            <h3>Escursione naturalistico-micologica sul Monte Belloro</h3>
+            <p>Un percorso di 6 km alla scoperta di habitat e specie fungine, in collaborazione con la Biblioteca di Premolo.</p>
+          </div>
+        </a>
+        <a class="news-card reveal" href="../2025/08/25/atsispettoratomicologico.html">
+          <div class="news-card__media">
+            <img src="../assets/images/ramariaparabotrytis.jpg" alt="Ramaria parabotrytis" loading="lazy">
+          </div>
+          <div class="news-card__body">
+            <time>25 agosto 2025</time>
+            <h3>Ispettorato Micologico ATS: il servizio di controllo gratuito</h3>
+            <p>Come e dove far controllare i funghi raccolti prima di consumarli, in tutta sicurezza.</p>
+          </div>
+        </a>
+      </div>
+      <div class="center">
+        <a href="../html/news.html" class="btn btn--outline">Tutte le news</a>
+      </div>
+    </section>
+
+    <!-- GALLERY -->
+    <section class="gallery" id="galleria">
+      <div class="section-head reveal">
+        <p class="eyebrow">Uno sguardo sul bosco</p>
+        <h2>Dalle nostre uscite</h2>
+      </div>
+      <div class="gallery__grid">
+        <figure class="reveal"><img src="../assets/images/hero0.webp" alt="Uscita micologica" loading="lazy"></figure>
+        <figure class="reveal"><img src="../assets/images/hero1.webp" alt="Escursione nel bosco" loading="lazy"></figure>
+        <figure class="reveal"><img src="../assets/images/cestino.jpg" alt="Cestino con funghi raccolti" loading="lazy"></figure>
+        <figure class="reveal"><img src="../assets/images/hero2.webp" alt="Attività del gruppo" loading="lazy"></figure>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-join" id="partecipa">
+      <div class="cta-join__content reveal">
+        <h2>Vuoi conoscere meglio il mondo dei funghi?</h2>
+        <p>Unisciti a noi in una delle prossime escursioni o scrivici per qualsiasi informazione: saremo felici di accoglierti.</p>
+        <div class="hero__actions">
+          <a href="../html/contatti.html" class="btn btn--primary">Contattaci</a>
+          <a href="../html/eventi.html" class="btn btn--outline-light">Vedi il calendario</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col footer-col--brand">
+        <img src="../assets/images/logo1.png" alt="Logo Associazione Micologica Bresadola - Villa d'Ogna" class="footer-logo">
+        <p>Associazione Micologica Bresadola<br>Gruppo di Villa d'Ogna</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/gruppomicologicovilladogna" aria-label="Seguici su Facebook">
+            <img src="../assets/images/facebook.svg" alt="Facebook">
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Esplora</h4>
+        <a href="../html/chi_siamo.html">Chi siamo</a>
+        <a href="../html/news.html">News</a>
+        <a href="../html/eventi.html">Eventi</a>
+        <a href="../html/leggi.html">Regolamenti 2026</a>
+        <a href="../html/riviste.html">Riviste</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contatti</h4>
+        <a href="mailto:pierino.bigoni@gmail.com">pierino.bigoni@gmail.com</a>
+        <a href="tel:+393384277839">+39 338 427 7839</a>
+        <span>Largo Europa 152, Villa d'Ogna (BG)</span>
+      </div>
+      <div class="footer-col">
+        <h4>Legale</h4>
+        <a href="../html/privacy.html">Privacy</a>
+        <a href="../html/contatti.html">Contattaci</a>
+        <span>C.F. 90002890169</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Associazione Micologica Bresadola - Gruppo di Villa d'Ogna - Tutti i diritti riservati</p>
+      <p class="footer-preview-tag">Anteprima design 2.0</p>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Torna in cima">↑</button>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
