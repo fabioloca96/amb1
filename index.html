@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="/assets/css/styles.css">
     <script src="https://cdn.jsdelivr.net/npm/ical.js@1.4.0/build/ical.min.js" defer></script>
     <script src="/assets/js/script.js" defer></script>
+    <script src="/assets/js/homepage-events.js" defer></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Lora:wght@400;700&family=Poppins:wght@400;600&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
@@ -87,7 +88,9 @@
     <section class="eventi">
         <h2>Prossimi Eventi</h2>
         <div class="eventi-container" aria-live="polite">
-            <!-- Gli eventi verranno caricati dinamicamente da JavaScript -->
+            <div class="evento evento--empty">
+              <p>Caricamento eventi in corso…</p>
+            </div>
             <noscript>
               <div class="evento">
                 <h3>Gli eventi non possono essere caricati: JavaScript disabilitato.</h3>
@@ -98,6 +101,10 @@
         <a href="/html/eventi.html" class="btn vedi-tutti">Vedi tutti gli eventi</a>
     </section>
   </main>
+
+  <div id="homeEventModal" class="home-event-modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="home-event-modal__box" id="homeEventModalBody"></div>
+  </div>
 
   <!-- Footer -->
   <footer>
