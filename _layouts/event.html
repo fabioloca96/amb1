@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }} — AMB Villa d'Ogna</title>
+  <meta name="description" content="{{ page.excerpt | default: page.title }}">
+  <meta name="robots" content="noindex, nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="icon" href="/assets/images/fungo_icon.png" type="image/x-icon">
+  <link rel="stylesheet" href="/v2/assets/css/style.css">
+</head>
+<body>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a href="/v2/index.html" class="brand">
+        <img src="/assets/images/logo1.png" alt="Logo Associazione Micologica Bresadola - Villa d'Ogna" class="brand__logo">
+        <span class="brand__text">AMB <em>Villa d'Ogna</em></span>
+      </a>
+
+      <nav class="navbar" id="navbar" aria-label="Navigazione principale">
+        <ul>
+          <li><a href="/v2/index.html">Home</a></li>
+          <li><a href="/html/chi_siamo.html">Chi siamo</a></li>
+          <li><a href="/html/news.html">News</a></li>
+          <li><a href="/v2/eventi.html" class="active">Eventi</a></li>
+          <li><a href="/html/leggi.html">Regolamenti</a></li>
+          <li><a href="/html/riviste.html">Riviste</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a href="/html/contatti.html" class="btn btn--ghost header-cta">Contattaci</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Apri menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="event-page">
+      {% if page.image %}
+        <div class="event-page__hero">
+          <img src="{{ page.image }}" alt="{{ page.title }}">
+        </div>
+      {% endif %}
+
+      <div class="event-page__content">
+        <a href="/v2/eventi.html" class="link-arrow event-page__back">← Tutti gli eventi</a>
+
+        <h1>{{ page.title }}</h1>
+
+        <div class="event-page__meta">
+          <span>📅
+            {% if page.end_date %}
+              Dal {{ page.date | date: "%-d" }} {% include mese-it.html date=page.date format="long" %}
+              al {{ page.end_date | date: "%-d" }} {% include mese-it.html date=page.end_date format="long" %} {{ page.end_date | date: "%Y" }}
+            {% else %}
+              {% include giorno-it.html date=page.date %} {{ page.date | date: "%-d" }} {% include mese-it.html date=page.date format="long" %} {{ page.date | date: "%Y" }}
+            {% endif %}
+          </span>
+          {% if page.location %}<span>📍 {{ page.location }}</span>{% endif %}
+        </div>
+
+        <div class="event-page__body">
+          {{ content }}
+        </div>
+
+        {% if page.gallery %}
+          <div class="event-page__gallery">
+            {% for img in page.gallery %}
+              <figure><img src="{{ img }}" alt="{{ page.title }}" loading="lazy"></figure>
+            {% endfor %}
+          </div>
+        {% endif %}
+
+        <a href="/html/contatti.html" class="btn btn--primary event-page__cta">Contattaci per informazioni</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col footer-col--brand">
+        <img src="/assets/images/logo1.png" alt="Logo AMB Villa d'Ogna" class="footer-logo">
+        <p>Associazione Micologica Bresadola<br>Gruppo di Villa d'Ogna</p>
+        <div class="social-icons">
+          <a href="https://www.facebook.com/gruppomicologicovilladogna" aria-label="Seguici su Facebook">
+            <img src="/assets/images/facebook.svg" alt="Facebook">
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Esplora</h4>
+        <a href="/html/chi_siamo.html">Chi siamo</a>
+        <a href="/html/news.html">News</a>
+        <a href="/v2/eventi.html">Eventi</a>
+        <a href="/html/leggi.html">Regolamenti 2026</a>
+        <a href="/html/riviste.html">Riviste</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contatti</h4>
+        <a href="mailto:pierino.bigoni@gmail.com">pierino.bigoni@gmail.com</a>
+        <a href="tel:+393384277839">+39 338 427 7839</a>
+        <span>Largo Europa 152, Villa d'Ogna (BG)</span>
+      </div>
+      <div class="footer-col">
+        <h4>Legale</h4>
+        <a href="/html/privacy.html">Privacy</a>
+        <a href="/html/contatti.html">Contattaci</a>
+        <span>C.F. 90002890169</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Associazione Micologica Bresadola - Gruppo di Villa d'Ogna - Tutti i diritti riservati</p>
+      <p class="footer-preview-tag">Anteprima design 2.0</p>
+    </div>
+  </footer>
+
+  <script src="/v2/assets/js/main.js" defer></script>
+</body>
+</html>

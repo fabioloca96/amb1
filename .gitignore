@@ -1,0 +1,5 @@
+vendor/
+.bundle/
+.claude/
+_site_test/
+_site_test2/

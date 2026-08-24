@@ -1,0 +1,1 @@
+{% comment %} Uso: {% include giorno-it.html date=event.date %} {% endcomment %}{% assign giorni = "domenica,lunedì,martedì,mercoledì,giovedì,venerdì,sabato" | split: "," %}{% assign g_index = include.date | date: "%w" | plus: 0 %}{{ giorni[g_index] }}

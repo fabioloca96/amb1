@@ -1,0 +1,53 @@
+backend:
+  name: github
+  repo: fabioloca96/amb1
+  branch: main
+  # Sostituisci con l'indirizzo del tuo proxy OAuth una volta creato (vedi guida di setup)
+  base_url: https://SOSTITUISCI-CON-IL-TUO-PROXY.workers.dev
+  auth_endpoint: auth
+
+# Dove Decap CMS carica le foto quando le inserisci dal pannello
+media_folder: "assets/images/eventi"
+public_folder: "/assets/images/eventi"
+
+# Anteprima delle modifiche prima della pubblicazione
+publish_mode: simple
+
+collections:
+  - name: "events"
+    label: "Eventi"
+    label_singular: "Evento"
+    folder: "_events"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} — {{date}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Layout", name: "layout", widget: "hidden", default: "event" }
+      - { label: "Titolo evento", name: "title", widget: "string" }
+      - label: "Data di inizio"
+        name: "date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+      - label: "Data di fine (solo se l'evento dura più giorni)"
+        name: "end_date"
+        widget: "datetime"
+        format: "YYYY-MM-DD"
+        date_format: "YYYY-MM-DD"
+        time_format: false
+        required: false
+      - { label: "Luogo", name: "location", widget: "string", required: false }
+      - { label: "Foto di copertina", name: "image", widget: "image" }
+      - label: "Galleria foto (facoltativa)"
+        name: "gallery"
+        widget: "list"
+        required: false
+        field: { label: "Foto", name: "image", widget: "image" }
+      - label: "Riassunto breve (mostrato nelle card)"
+        name: "excerpt"
+        widget: "text"
+      - label: "Descrizione completa dell'evento"
+        name: "body"
+        widget: "markdown"

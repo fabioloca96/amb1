@@ -39,3 +39,13 @@ image: "/assets/images/logo.jpg"  # Crea questa immagine 1200x630px
 timezone: "Europe/Rome"
 lang: "it_IT"
 
+# Senza questo, Jekyll nasconde di default post/eventi con data futura
+# (utile per gli eventi in programma, che per definizione sono nel futuro)
+future: true
+
+# Collection eventi (v2) - una pagina per ogni evento, gestita dal pannello /admin
+collections:
+  events:
+    output: true
+    permalink: /v2/eventi/:slug/
+
