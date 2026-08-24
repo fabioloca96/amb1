@@ -2,20 +2,20 @@
 layout: post
 title: "Apertura degli Ispettorati Micologici ATS - Stagione 2026"
 image: /assets/images/cestino.jpg
-author: "ATS Regione Lombardia"
+author: "ATS Bergamo"
 date: 2026-08-24
 ---
 
-Dal **17 agosto al 30 novembre 2026** riaprono gli Ispettorati Micologici delle ATS di Regione Lombardia. Il servizio, gratuito, permette a chi ha raccolto funghi, li ha ricevuti in regalo o acquistati al di fuori dei normali circuiti commerciali di farli controllare da un micologo abilitato prima di consumarli.
+Dal **17 agosto al 30 novembre 2026** riaprono i punti dell'Ispettorato Micologico di ATS Bergamo sul territorio provinciale. Il servizio, gratuito, permette a chi ha raccolto funghi, li ha ricevuti in regalo o acquistati al di fuori dei normali circuiti commerciali di farli controllare da un micologo abilitato prima di consumarli.
 
 ## Sedi, orari e contatti
 
 **BERGAMO** - via Borgo Palazzo, 130 - Pad. 9 | Tel: 035-2270.586
-Su appuntamento telefonico oppure online sul sito [atsbg.it](https://www.atsbg.it/disposizioni-vendita-raccoltafunghi), alla voce "Prenota il tuo appuntamento".
+Su appuntamento telefonico oppure online sul sito [ats-bg.it](https://www.ats-bg.it/disposizioni-vendita-raccolta-funghi), alla voce "Prenota il tuo appuntamento".
 Lunedì, Martedì, Giovedì h. 14:00-16:00 | dal 17 agosto al 30 novembre 2026
 
 **TRESCORE BALNEARIO** - via Ospedale, 38 | Tel: 035-2270.586
-Su appuntamento telefonico oppure online sul sito [atsbg.it](https://www.atsbg.it/disposizioni-vendita-raccoltafunghi), alla voce "Prenota il tuo appuntamento".
+Su appuntamento telefonico oppure online sul sito [ats-bg.it](https://www.ats-bg.it/disposizioni-vendita-raccolta-funghi), alla voce "Prenota il tuo appuntamento".
 Lunedì, Mercoledì h. 14:00-16:00 | dal 17 agosto al 30 novembre 2026
 
 **TREVIGLIO** - via S. Giovanni Bosco, 3 | Tel: 035-2270317
