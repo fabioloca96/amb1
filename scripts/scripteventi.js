@@ -20,6 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
   let allEvents = [];
   let filteredEvents = [];
   let currentFilter = 'public';
+  let calendarViewDate = new Date();
+  let selectedCalendarDate = null;
   
   // Fetch calendar data
   fetchCalendarData();
@@ -238,9 +240,146 @@ function applyFilters() {
   
     displayEvents(filteredEvents);
   }
+  function sameDay(dateA, dateB) {
+    if (!dateA || !dateB) return false;
+    return dateA.getFullYear() === dateB.getFullYear() &&
+      dateA.getMonth() === dateB.getMonth() &&
+      dateA.getDate() === dateB.getDate();
+  }
+
+  function getEventsForDate(date, events) {
+    if (!events || !events.length) return [];
+
+    const target = new Date(date);
+    target.setHours(0, 0, 0, 0);
+
+    return events.filter(event => {
+      const eventStart = new Date(event.start);
+      const eventEnd = new Date(event.end);
+
+      eventStart.setHours(0, 0, 0, 0);
+      eventEnd.setHours(0, 0, 0, 0);
+
+      if (sameDay(eventStart, target)) return true;
+      if (sameDay(eventEnd, target)) return true;
+
+      return target > eventStart && target < eventEnd;
+    });
+  }
+
+  function renderCalendar(events) {
+    if (!events.length) {
+      eventsGrid.innerHTML = `
+        <div class="no-events">
+          <i class="fas fa-calendar-times"></i>
+          <p>Nessun evento trovato</p>
+        </div>
+      `;
+      return;
+    }
+
+    if (!selectedCalendarDate) {
+      const firstEventDate = new Date(events[0].start);
+      selectedCalendarDate = new Date(firstEventDate.getFullYear(), firstEventDate.getMonth(), firstEventDate.getDate());
+    }
+
+    const monthStart = new Date(calendarViewDate.getFullYear(), calendarViewDate.getMonth(), 1);
+    const monthEnd = new Date(calendarViewDate.getFullYear(), calendarViewDate.getMonth() + 1, 0);
+    const startDayIndex = (monthStart.getDay() + 6) % 7;
+    const daysInMonth = monthEnd.getDate();
+    const daysBefore = startDayIndex;
+    const totalCells = Math.ceil((daysBefore + daysInMonth) / 7) * 7;
+
+    const monthLabel = monthStart.toLocaleDateString('it-IT', { month: 'long', year: 'numeric' });
+
+    let calendarHTML = `
+      <div class="calendar-shell">
+        <div class="calendar-toolbar">
+          <button type="button" class="calendar-nav" data-direction="prev" aria-label="Mese precedente">&#8249;</button>
+          <h3>${monthLabel.charAt(0).toUpperCase() + monthLabel.slice(1)}</h3>
+          <button type="button" class="calendar-nav" data-direction="next" aria-label="Mese successivo">&#8250;</button>
+        </div>
+        <div class="calendar-weekdays">
+          <span>Lun</span>
+          <span>Mar</span>
+          <span>Mer</span>
+          <span>Gio</span>
+          <span>Ven</span>
+          <span>Sab</span>
+          <span>Dom</span>
+        </div>
+        <div class="calendar-grid">`;
+
+    for (let i = 0; i < totalCells; i++) {
+      const dayDate = new Date(monthStart.getFullYear(), monthStart.getMonth(), i - daysBefore + 1);
+      const dayEvents = getEventsForDate(dayDate, events);
+      const isCurrentMonth = dayDate.getMonth() === monthStart.getMonth();
+      const isSelected = selectedCalendarDate && sameDay(dayDate, selectedCalendarDate);
+      const hasEvents = dayEvents.length > 0;
+
+      calendarHTML += `
+        <button type="button"
+          class="calendar-day ${isCurrentMonth ? '' : 'calendar-day--muted'} ${hasEvents ? 'has-events' : ''} ${isSelected ? 'selected' : ''}"
+          data-date="${dayDate.toISOString()}"
+          aria-label="${dayDate.toLocaleDateString('it-IT', { day: 'numeric', month: 'long', year: 'numeric' })}">
+          <span class="calendar-day-number">${dayDate.getDate()}</span>
+          ${hasEvents ? '<span class="calendar-dot" aria-hidden="true"></span>' : ''}
+        </button>`;
+    }
+
+    calendarHTML += `</div>`;
+
+    const selectedEvents = getEventsForDate(selectedCalendarDate, events);
+    calendarHTML += `
+      <div class="calendar-day-details">
+        <h4>${selectedCalendarDate.toLocaleDateString('it-IT', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' })}</h4>
+        ${selectedEvents.length ? `
+          <div class="day-event-list">
+            ${selectedEvents.map(event => `
+              <button type="button" class="day-event-item" data-event-id="${event.id}">
+                <span class="day-event-time">${new Date(event.start).toLocaleTimeString('it-IT', { hour: '2-digit', minute: '2-digit' })}</span>
+                <span class="day-event-title">${event.title}</span>
+              </button>
+            `).join('')}
+          </div>
+        ` : '<p class="no-day-events">Nessun evento programmato in questa data.</p>'}
+      </div>
+    </div>`;
+
+    eventsGrid.innerHTML = calendarHTML;
+
+    eventsGrid.querySelectorAll('.calendar-day').forEach(dayButton => {
+      dayButton.addEventListener('click', () => {
+        const clickedDate = new Date(dayButton.dataset.date);
+        selectedCalendarDate = new Date(clickedDate.getFullYear(), clickedDate.getMonth(), clickedDate.getDate());
+        renderCalendar(events);
+      });
+    });
+
+    eventsGrid.querySelectorAll('.calendar-nav').forEach(button => {
+      button.addEventListener('click', () => {
+        const direction = button.dataset.direction === 'next' ? 1 : -1;
+        calendarViewDate = new Date(calendarViewDate.getFullYear(), calendarViewDate.getMonth() + direction, 1);
+        const firstDay = new Date(events[0].start);
+        const earliestMonth = new Date(firstDay.getFullYear(), firstDay.getMonth(), 1);
+        if (calendarViewDate < earliestMonth && events.length) {
+          calendarViewDate = new Date(earliestMonth);
+        }
+        renderCalendar(events);
+      });
+    });
+
+    eventsGrid.querySelectorAll('.day-event-item').forEach(button => {
+      button.addEventListener('click', () => {
+        const event = events.find(item => item.id === button.dataset.eventId);
+        if (event) openEventModal(event);
+      });
+    });
+  }
+
   function displayEvents(events) {
     eventsGrid.innerHTML = '';
-  
+
     if (events.length === 0) {
       eventsGrid.innerHTML = `
         <div class="no-events">
@@ -250,7 +389,14 @@ function applyFilters() {
       `;
       return;
     }
-  
+
+    if (currentFilter === 'all') {
+      const earliestEvent = new Date(Math.min(...events.map(event => new Date(event.start).getTime())));
+      calendarViewDate = new Date(earliestEvent.getFullYear(), earliestEvent.getMonth(), 1);
+      renderCalendar(events);
+      return;
+    }
+
     events.forEach(event => {
       const startDate = new Date(event.start);
       let endDate = new Date(event.end);
